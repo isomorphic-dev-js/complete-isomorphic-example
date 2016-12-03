@@ -1,0 +1,15 @@
+.ui.segment:first-child {
+  margin-top: 1rem;
+}
+
+.ui.segment:last-child {
+  margin-bottom: 1rem;
+}
+
+.button {
+  margin-top: 1rem;
+}
+
+.form {
+  margin-top: 1rem;
+}

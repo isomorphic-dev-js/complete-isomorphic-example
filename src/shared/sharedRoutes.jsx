@@ -9,11 +9,12 @@ import Blog from '../components/blog';
 
 const routes = (
   <Router>
-    <IndexRoute path="/" component={App} />
-    <Route path="/cart" component={Cart} />
-    <Route path="/products" component={Products} />
-    <Route path="/product/detail/:id" component={Detail} />
-    <Route path="/blog" component={Blog} />
+    <Route path="/" component={App}>
+      <Route path="/cart" component={Cart} />
+      <Route path="/products" component={Products} />
+      <Route path="/product/detail/:id" component={Detail} />
+      <Route path="/blog" component={Blog} />
+    </Route>
   </Router>
 );
 

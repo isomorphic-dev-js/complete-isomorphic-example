@@ -1,10 +1,10 @@
 import React from 'react';
 
-const HTML = () => {
+const HTML = (props) => {
   return (
     <html lang="en">
       <head>
-        <title>Chapter 5 - Redux</title>
+        <title>All Things Westies</title>
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/semantic-ui/2.2.2/semantic.min.css"
@@ -13,7 +13,7 @@ const HTML = () => {
       <body>
         <div
           id="react-content"
-          dangerouslySetInnerHTML={{ __html: this.props.html }}
+          dangerouslySetInnerHTML={{ __html: props.html }}
         />
       </body>
     </html>

@@ -7,8 +7,9 @@ const HTML = (props) => {
         <title>All Things Westies</title>
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/semantic-ui/2.2.2/semantic.min.css"
+          href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css"
         />
+      <link rel="stylesheet" href="assets/style.css" />
       </head>
       <body>
         <div
@@ -18,6 +19,10 @@ const HTML = (props) => {
       </body>
     </html>
   );
+};
+
+HTML.propTypes = {
+  html: React.PropTypes.string
 };
 
 export default HTML;

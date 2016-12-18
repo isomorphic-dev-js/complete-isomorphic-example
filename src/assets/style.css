@@ -1,0 +1,12 @@
+.main.container {
+  margin-top: 7em;
+}
+
+.ui.positive.basic.button {
+  display: block;
+  margin-top: 10px;
+}
+
+.cart .right.aligned.content {
+  text-align: right;
+}

@@ -1,42 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-// import * as actionCreators from '../action-creators';
-// import classnames from 'classnames';
 
-
-class App extends React.Component {
-
-  static intialActions() {
-    return [];
-  }
-
-  render() {
-    return (
-      <div className="main ui container">
-        <div className="ui fixed inverted menu header">
-          <h1>All Things Westies</h1>
-        </div>
-        {this.props.children}
+const App = (props) => {
+  return (
+    <div>
+      <div className="ui fixed inverted menu">
+        <h1 className="header item">All Things Westies</h1>
+        <a href="/products" className="item">Products</a>
+        <a href="/cart" className="item">Cart</a>
+        <a href="/blog" className="item">Blog</a>
       </div>
-    );
-  }
-}
-
-function mapStateToProps(state) {
-  return {
-    state
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch
-  };
-}
-
+      <div className="ui main text container">
+        {props.children}
+      </div>
+    </div>
+  );
+};
 App.propTypes = {
   children: React.PropTypes.element
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App;

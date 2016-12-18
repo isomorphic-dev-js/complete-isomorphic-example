@@ -1,0 +1,32 @@
+{
+  "mugs": {
+    "items": [],
+    "iconImage": "",
+    "label": "",
+    "description": ""
+  },
+  "socks": {
+    "items": [],
+    "iconImage": "",
+    "label": "",
+    "description": ""
+  },
+  "collars": {
+    "items": [],
+    "iconImage": "",
+    "label": "",
+    "description": ""
+  },
+  "leashes": {
+    "items": [],
+    "iconImage": "",
+    "label": "",
+    "description": ""
+  },
+  "treats": {
+    "items": [],
+    "iconImage": "",
+    "label": "",
+    "description": ""
+  }
+}

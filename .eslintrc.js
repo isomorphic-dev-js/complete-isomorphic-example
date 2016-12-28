@@ -10,6 +10,9 @@ module.exports = {
         requireReturnForObjectLiteral: false,
       }],
       "comma-dangle": ["error", "never"]
+    },
+    "globals": {
+      "window": true,
+      "document": true,
     }
-
 };

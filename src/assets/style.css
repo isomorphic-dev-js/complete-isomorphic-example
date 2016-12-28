@@ -1,3 +1,11 @@
+/*
+Overriding semantic UI fonts to prevent font performance issues
+which makes examples clearer.
+*/
+#react-content *{
+  font-family: Arial;
+}
+
 .main.container {
   margin-top: 7em;
 }

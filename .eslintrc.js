@@ -9,7 +9,8 @@ module.exports = {
       "arrow-body-style": [0, "as-needed", {
         requireReturnForObjectLiteral: false,
       }],
-      "comma-dangle": ["error", "never"]
+      "comma-dangle": ["error", "never"],
+      "no-underscore-dangle": [0]
     },
     "globals": {
       "window": true,

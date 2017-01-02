@@ -16,7 +16,6 @@ const HTML = (props) => {
           id="react-content"
           dangerouslySetInnerHTML={{ __html: props.html }}
         />
-        <script type="application/javascript" src="browser.js" />
       </body>
     </html>
   );

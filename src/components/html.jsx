@@ -23,7 +23,8 @@ const HTML = (props) => {
 };
 
 HTML.propTypes = {
-  html: React.PropTypes.string
+  html: React.PropTypes.string,
+  serverState: React.PropTypes
 };
 
 export default HTML;

@@ -37,17 +37,13 @@ export default function renderView(req, res, next) {
         return store.dispatch(initialAction());
       });
       Promise.all(promises).then(() => {
-        try {
-          const app = renderToString(
-            <Provider store={store}>
-              <RouterContext routes={routes} {...renderProps} />
-            </Provider>
-          );
-          const html = renderToString(<HTML html={app} />);
-          return res.send(`<!DOCTYPE html>${html}`);
-        } catch (e) {
-          return next(e);
-        }
+        const app = renderToString(
+          <Provider store={store}>
+            <RouterContext routes={routes} {...renderProps} />
+          </Provider>
+        );
+        const html = renderToString(<HTML html={app} />);
+        return res.send(`<!DOCTYPE html>${html}`);
       }).catch(() => {
         return next();
       });

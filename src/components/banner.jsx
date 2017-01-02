@@ -8,9 +8,8 @@ class Banner extends React.Component {
   }
 
   render() {
-    const bannerClasses = classnames({ show: this.state.show }, 'banner');
     return (
-      <div className={bannerClasses}>
+      <div className="banner">
         <div className="dismiss">
           <button
             className="btn-reset"

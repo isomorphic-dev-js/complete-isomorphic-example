@@ -17,6 +17,10 @@ class Cart extends Component {
     this.proceedToCheckout = this.proceedToCheckout.bind(this);
   }
 
+  componentWillMount() {
+    window.test = true;
+  }
+
   getTotal() {
     let total = 0;
     if (this.props.items) {

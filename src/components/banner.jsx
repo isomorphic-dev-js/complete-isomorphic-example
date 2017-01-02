@@ -3,13 +3,35 @@ import classnames from 'classnames';
 
 class Banner extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false
+    };
+    this.handleDismissBanner = this.handleDismissBanner.bind(this);
+  }
+
+  componentDidMount() {
+    const cookies = document.cookie;
+    const hideBanner = cookies.match('showBanner=false');
+    if (!hideBanner) {
+      this.setState({
+        show: true
+      });
+    }
+  }
+
   handleDismissBanner() {
-    // will do something
+    document.cookie = 'showBanner=false';
+    this.setState({
+      show: false
+    });
   }
 
   render() {
+    const bannerClasses = classnames({ show: this.state.show }, 'banner');
     return (
-      <div className="banner">
+      <div className={bannerClasses}>
         <div className="dismiss">
           <button
             className="btn-reset"

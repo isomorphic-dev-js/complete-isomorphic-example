@@ -13,7 +13,7 @@ const store = initRedux(initialState);
 function init() {
   ReactDOM.render(
     <Provider store={store}>
-      <Router routes={sharedRoutes} history={browserHistory} />
+      <Router routes={sharedRoutes(store)} history={browserHistory} />
     </Provider>, document.getElementById('react-content'));
 }
 

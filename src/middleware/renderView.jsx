@@ -2,13 +2,13 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
-import routes from '../shared/sharedRoutes';
+import { routes } from '../shared/sharedRoutes';
 import initRedux from '../shared/init-redux.es6';
 import HTML from '../components/html';
 
 export default function renderView(req, res, next) {
   const matchOpts = {
-    routes,
+    routes: routes(),
     location: req.url
   };
   const handleMatchResult = (error, redirectLocation, renderProps) => {

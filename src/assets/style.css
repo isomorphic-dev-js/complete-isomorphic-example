@@ -18,3 +18,38 @@ which makes examples clearer.
 .cart .right.aligned.content {
   text-align: right;
 }
+
+.banner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #CCC;
+  display: none;
+}
+
+.banner.show {
+  display: block;
+}
+
+.banner .content {
+  margin: 10px;
+  text-align: center;
+}
+
+.banner .dismiss {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.btn-reset {
+  background: none;
+  border: 0;
+  color: inherit;
+  /* cursor: default; */
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  box-sizing: content-box;
+}

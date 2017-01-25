@@ -1,10 +1,9 @@
 import express from 'express';
 import fs from 'fs';
-import renderViewMiddleware from './middleware/renderView';
 
 const app = express();
 
-// setup static files to load css
+// setup static files to load css/assets/html
 app.use(express.static(__dirname));
 
 app.get('/api/user/cart', (req, res) => {

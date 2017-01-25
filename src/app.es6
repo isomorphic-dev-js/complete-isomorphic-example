@@ -35,20 +35,14 @@ app.get('/api/products', (req, res) => {
   });
 });
 
-app.get('/api/blog', (req, res) => {
-  fs.readFile('./data/blog.json', 'utf8', (err, data) => {
+app.get('/api/user', (req, res) => {
+  fs.readFile('./data/user.json', 'utf8', (err, data) => {
     if (err) {
       return res.status(404).send;
     }
     return res.send(JSON.parse(data));
   });
 });
-
-app.get('/test', (req, res) => {
-  res.send('Test route success!');
-});
-
-app.get('/*', renderViewMiddleware);
 
 app.listen(3000, () => {
   console.log('App listening on port: 3000');

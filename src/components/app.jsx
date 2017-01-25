@@ -1,23 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router';
 
-const App = (props) => {
+const App = () => {
   return (
     <div>
       <div className="ui fixed inverted menu">
         <h1 className="header item">All Things Westies</h1>
-        <Link to="/products" className="item">Products</Link>
-        <Link to="/cart" className="item">Cart</Link>
-        <Link to="/blog" className="item">Blog</Link>
+        <a to="/products" className="item">Products</a>
+        <a to="/cart" className="item">Cart</a>
+        <a to="/profile" className="item">Profile</a>
       </div>
       <div className="ui main text container">
-        {props.children}
+        Content Placeholder
       </div>
     </div>
   );
-};
-App.propTypes = {
-  children: React.PropTypes.element
 };
 
 export default App;

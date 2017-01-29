@@ -43,6 +43,10 @@ app.get('/api/user', (req, res) => {
   });
 });
 
+app.get('/*', (req, res) => {
+  res.sendFile(`${__dirname}/index.html`);
+});
+
 app.listen(3000, () => {
   console.log('App listening on port: 3000');
 });

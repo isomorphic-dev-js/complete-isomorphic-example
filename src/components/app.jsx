@@ -1,6 +1,6 @@
 import React from 'react';
 
-const App = () => {
+const App = (props) => {
   return (
     <div>
       <div className="ui fixed inverted menu">
@@ -10,10 +10,14 @@ const App = () => {
         <a href="/profile" className="item">Profile</a>
       </div>
       <div className="ui main text container">
-        Content Placeholder
+        {props.children}
       </div>
     </div>
   );
+};
+
+App.propTypes = {
+  children: React.PropTypes.element
 };
 
 export default App;

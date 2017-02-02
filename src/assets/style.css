@@ -75,3 +75,8 @@ which makes examples clearer.
   padding: 0;
   box-sizing: content-box;
 }
+
+.products .tooltip {
+  margin-top: 10px;
+  max-width: 200px;
+}

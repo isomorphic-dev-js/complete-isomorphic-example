@@ -11,14 +11,27 @@ const App = (props) => {
         <Link to="/profile" className="item">Profile</Link>
       </div>
       <div className="ui main text container">
-        {props.children}
+        {
+          React.Children.map(
+            props.children,
+            (child) => {
+              return React.cloneElement(
+                child,
+                { router: props.router }
+              );
+            }
+          )
+        }
       </div>
     </div>
   );
 };
 
 App.propTypes = {
-  children: React.PropTypes.element
+  children: React.PropTypes.element,
+  router: React.PropTypes.shape({
+    push: React.PropTypes.function
+  })
 };
 
 export default App;

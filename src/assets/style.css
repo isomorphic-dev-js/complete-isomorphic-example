@@ -6,6 +6,28 @@ which makes examples clearer.
   font-family: Arial;
 }
 
+#react-content .icon {
+  font-family: 'Icons';
+}
+
+#react-content .products .icon {
+  font-size: 2em;
+}
+
+#react-content .products .category-title {
+  margin-top: 10px;
+}
+
+#react-content .products {
+  text-align: center;
+}
+
+#react-content .icon.search {
+  margin-left: -40px;
+  margin-top: 7px;
+  font-size: 1.2em;
+}
+
 .main.container {
   margin-top: 7em;
 }

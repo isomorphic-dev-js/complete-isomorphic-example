@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Banner from './banner';
 
 const App = (props) => {
   return (
@@ -10,6 +11,9 @@ const App = (props) => {
         <Link to="/cart" className="item">Cart</Link>
         <Link to="/blog" className="item">Blog</Link>
       </div>
+      <Banner show>
+        <h3>Check out the semi-annual sale! Up to 75% off select Items</h3>
+      </Banner>
       <div className="ui main text container">
         {props.children}
       </div>

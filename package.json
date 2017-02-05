@@ -4,10 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "clean": "rm -rf dist",
-    "build:server": "./node_modules/.bin/babel src -d dist",
     "build:browser": "webpack",
-    "_prestart": "npm run clean && npm run build:server && npm run build:browser",
+    "prestart": "npm run build:browser",
     "start": "node src/server.js",
     "examples": "node examples-server.js"
   },

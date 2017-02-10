@@ -21,7 +21,7 @@ describe('Item Component', () => {
     props = null;
   });
 
-  it('Displays a thumbnail sbased on its props', () => {
+  it('Displays a thumbnail based on its props', () => {
     expect(testComponent.find({ src: props.thumbnail }).length).to.eq(1);
   });
 

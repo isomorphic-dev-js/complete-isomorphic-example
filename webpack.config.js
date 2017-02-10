@@ -15,10 +15,13 @@ module.exports = {
       {
         test: /\.css$/,
         loaders: ['style', 'css']
+      },
+      {
+        test: /\.json$/, loader: 'json'
       }
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.css', '.es6']
+    extensions: ['', '.js', '.jsx', '.css', '.es6', '.json']
   }
 };

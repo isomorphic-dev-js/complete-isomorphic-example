@@ -2,8 +2,10 @@ import React from 'react';
 import { Route } from 'react-router';
 import App from '../components/app';
 import Cart from '../components/cart';
+import Payment from '../components/payment';
 import Products from '../components/products';
 import Profile from '../components/profile';
+import Login from '../components/login';
 
 let beforeRouteRender = (dispatch, prevState, nextState) => {
   const { routes } = nextState;
@@ -32,8 +34,10 @@ export const routes = (onChange = () => {}) => {
   return (
     <Route path="/" component={App} onChange={onChange}>
       <Route path="/cart" component={Cart} />
+      <Route path="/cart/payment" component={Payment} />
       <Route path="/products" component={Products} />
       <Route path="/profile" component={Profile} />
+      <Route path="/login" component={Login} />
     </Route>
   );
 };

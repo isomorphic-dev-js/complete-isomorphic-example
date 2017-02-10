@@ -9,7 +9,7 @@ const HTML = (props) => {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css"
         />
-      <link rel="stylesheet" href="assets/style.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
       </head>
       <body>
         <div

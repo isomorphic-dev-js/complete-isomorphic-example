@@ -14,7 +14,12 @@ export default function (initialStore = {}) {
     cart
   });
   const middleware = [thunkMiddleware, loggerMiddleware()];
-  return compose(
+  let newCompose;
+  if (typeof window !== 'undefined') {
+    newCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+  }
+  const composeEnhancers = newCompose || compose;
+  return composeEnhancers(
       applyMiddleware(...middleware)
     )(createStore)(reducer, initialStore);
 }

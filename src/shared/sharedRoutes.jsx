@@ -1,21 +1,51 @@
 import React from 'react';
-import { Route, Router } from 'react-router';
+import { Route } from 'react-router';
 import App from '../components/app';
 import Cart from '../components/cart';
+import Payment from '../components/payment';
 import Products from '../components/products';
-import Detail from '../components/detail';
-import Blog from '../components/blog';
-// import NotFound from '../components/not-found';
+import Profile from '../components/profile';
+import Login from '../components/login';
 
-const routes = (
-  <Router>
-    <Route path="/" component={App}>
+let beforeRouteRender = (dispatch, prevState, nextState) => {
+  const { routes } = nextState;
+  routes.map((route) => {
+    const { component } = route;
+    if (component) {
+      if (component.displayName &&
+        component.displayName.toLowerCase().indexOf('connect') > -1
+      ) {
+        if (component.WrappedComponent.loadData) {
+          return component.WrappedComponent.loadData();
+        }
+      } else if (component.loadData) {
+        return component.loadData();
+      }
+    }
+    return [];
+  }).reduce((flat, toFlatten) => {
+    return flat.concat(toFlatten);
+  }, []).map((initialAction) => {
+    return dispatch(initialAction());
+  });
+};
+
+export const routes = (onChange = () => {}) => {
+  return (
+    <Route path="/" component={App} onChange={onChange}>
       <Route path="/cart" component={Cart} />
+      <Route path="/cart/payment" component={Payment} />
       <Route path="/products" component={Products} />
-      <Route path="/product/detail/:id" component={Detail} />
-      <Route path="/blog" component={Blog} />
+      <Route path="/profile" component={Profile} />
+      <Route path="/login" component={Login} />
     </Route>
-  </Router>
-);
+  );
+};
 
-export default routes;
+
+const createSharedRoutes = ({ dispatch }) => {
+  beforeRouteRender = beforeRouteRender.bind(this, dispatch);
+  return routes(beforeRouteRender);
+};
+
+export default createSharedRoutes;

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Item from './item';
 import cartActions from '../shared/cart-action-creators.es6';
 
-class Cart extends Component {
+export class CartComponent extends Component {
 
   static loadData() {
     return [
@@ -28,7 +28,7 @@ class Cart extends Component {
   }
 
   proceedToCheckout() {
-    console.log('clicked checkout button', this.props);
+    this.props.router.push('/cart/payment');
   }
 
   renderItems() {
@@ -63,12 +63,15 @@ class Cart extends Component {
   }
 }
 
-Cart.propTypes = {
+CartComponent.propTypes = {
   items: React.PropTypes.arrayOf(React.PropTypes.shape({
     name: React.PropTypes.string,
     price: React.PropTypes.number,
     thumbnail: React.PropTypes.string
-  }))
+  })),
+  router: React.PropTypes.shape({
+    push: React.PropTypes.function
+  })
 };
 
 function mapStateToProps(state) {
@@ -84,4 +87,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(CartComponent);

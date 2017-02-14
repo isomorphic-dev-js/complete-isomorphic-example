@@ -4,10 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build:browser": "webpack",
-    "prestart": "npm run build:browser",
-    "start": "node src/server.js",
-    "examples": "node examples-server.js"
+    "start": "node src/server.js"
   },
   "author": "elyseko",
   "license": "ISC",

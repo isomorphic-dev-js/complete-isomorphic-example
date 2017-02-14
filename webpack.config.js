@@ -1,7 +1,8 @@
 module.exports = {
   entry: "./src/main.jsx",
+  devtool: "source-map",
   output: {
-    path: __dirname + '/dist/',
+    path: __dirname + '/src/',
     filename: "browser.js"
   },
   module: {

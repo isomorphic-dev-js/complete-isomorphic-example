@@ -1,10 +1,9 @@
 import express from 'express';
 import fs from 'fs';
-import renderViewMiddleware from './middleware/renderView';
 
 const app = express();
 
-// setup static files to load css
+// setup static files to load css/assets/html
 app.use(express.static(__dirname));
 
 app.get('/api/user/cart', (req, res) => {
@@ -35,8 +34,8 @@ app.get('/api/products', (req, res) => {
   });
 });
 
-app.get('/api/blog', (req, res) => {
-  fs.readFile('./data/blog.json', 'utf8', (err, data) => {
+app.get('/api/user', (req, res) => {
+  fs.readFile('./data/user.json', 'utf8', (err, data) => {
     if (err) {
       return res.status(404).send;
     }
@@ -44,11 +43,9 @@ app.get('/api/blog', (req, res) => {
   });
 });
 
-app.get('/test', (req, res) => {
-  res.send('Test route success!');
+app.get('/*', (req, res) => {
+  res.sendFile(`${__dirname}/index.html`);
 });
-
-app.get('/*', renderViewMiddleware);
 
 app.listen(3000, () => {
   console.log('App listening on port: 3000');

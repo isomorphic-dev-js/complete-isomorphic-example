@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 
 class Cart extends Component {
-
   render() {
     return (
       <div className="cart main ui segment">
-        Cart!
+        <div className="ui segment divided items">
+          Items will go here.
+        </div>
+        <div className="ui right rail">
+          <div className="ui segment">
+            <span>Total: </span><span>$10</span>
+            <div>Placeholder</div>
+            <button className="ui positive basic button">
+              Checkout
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
 }
-
-Cart.propTypes = {
-  items: React.PropTypes.arrayOf(React.PropTypes.shape({
-    name: React.PropTypes.string,
-    price: React.PropTypes.number,
-    thumbnail: React.PropTypes.string
-  }))
-};
 
 export default Cart;

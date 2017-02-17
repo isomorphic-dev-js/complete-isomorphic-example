@@ -14,7 +14,7 @@ const HTML = (props) => {
       <body>
         <div
           id="react-content"
-          dangerouslySetInnerHTML={{ __html: props.html }}
+          dangerouslySetInnerHTML={{ __html: props.renderedToStringComponents }}
         />
       </body>
     </html>
@@ -22,7 +22,7 @@ const HTML = (props) => {
 };
 
 HTML.propTypes = {
-  html: React.PropTypes.string
+  renderedToStringComponents: React.PropTypes.string
 };
 
 export default HTML;

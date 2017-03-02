@@ -1,5 +1,9 @@
 # Isomorphic App Example
 
+## Get the Book
+
+This example is used in [Isomorphic Development with JavaScript](http://bit.ly/isomorphicdevwithjs-github)
+
 ## All things Westies
 
 ### Setup

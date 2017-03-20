@@ -6,6 +6,7 @@ import Payment from '../components/payment';
 import Products from '../components/products';
 import Profile from '../components/profile';
 import Login from '../components/login';
+import { sendData } from '../analytics.es6';
 
 let beforeRouteRender = (dispatch, prevState, nextState) => {
   const { routes } = nextState;
@@ -27,6 +28,11 @@ let beforeRouteRender = (dispatch, prevState, nextState) => {
     return flat.concat(toFlatten);
   }, []).map((initialAction) => {
     return dispatch(initialAction());
+  });
+
+  sendData({
+    path: routes.location,
+    type: 'navigation'
   });
 };
 

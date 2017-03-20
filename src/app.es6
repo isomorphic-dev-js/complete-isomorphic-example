@@ -48,6 +48,10 @@ app.get('/test', (req, res) => {
   res.send('Test route success!');
 });
 
+app.post('/analytics', (req, res) => {
+  res.send();
+});
+
 app.get('/*', renderViewMiddleware);
 
 app.listen(3000, () => {

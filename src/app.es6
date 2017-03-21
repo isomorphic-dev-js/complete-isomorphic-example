@@ -4,9 +4,6 @@ import renderViewMiddleware from './middleware/renderView';
 
 const app = express();
 
-// setup static files to load css
-app.use(express.static(__dirname));
-
 app.get('/api/user/cart', (req, res) => {
   fs.readFile('./data/cart.json', 'utf8', (err, data) => {
     if (err) {
@@ -49,6 +46,9 @@ app.get('/test', (req, res) => {
 });
 
 app.get('/*', renderViewMiddleware);
+
+// setup static files to load css
+app.use(express.static(__dirname));
 
 app.listen(3000, () => {
   console.log('App listening on port: 3000');

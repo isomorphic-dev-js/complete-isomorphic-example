@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 import App from '../components/app';
 import Cart from '../components/cart';
 import Products from '../components/products';
@@ -31,9 +31,10 @@ let beforeRouteRender = (dispatch, prevState, nextState) => {
 export const routes = (onChange = () => {}) => {
   return (
     <Route path="/" component={App} onChange={onChange}>
-      <Route path="/cart" component={Cart} />
-      <Route path="/products" component={Products} />
-      <Route path="/profile" component={Profile} />
+      <IndexRoute component={Products} />
+      <Route path="cart" component={Cart} />
+      <Route path="products" component={Products} />
+      <Route path="profile" component={Profile} />
     </Route>
   );
 };

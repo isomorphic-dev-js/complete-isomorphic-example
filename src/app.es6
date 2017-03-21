@@ -3,9 +3,6 @@ import fs from 'fs';
 
 const app = express();
 
-// setup static files to load css/assets/html
-app.use(express.static(__dirname));
-
 app.get('/api/user/cart', (req, res) => {
   fs.readFile('./data/cart.json', 'utf8', (err, data) => {
     if (err) {
@@ -42,6 +39,9 @@ app.get('/api/user', (req, res) => {
     return res.send(JSON.parse(data));
   });
 });
+
+// setup static files to load css
+app.use(express.static(__dirname));
 
 app.get('/*', (req, res) => {
   res.sendFile(`${__dirname}/index.html`);

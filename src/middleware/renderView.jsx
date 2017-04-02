@@ -20,10 +20,10 @@ export default function renderView(req, res, next) {
             component.displayName.toLowerCase().indexOf('connect') > -1
           ) {
             if (component.WrappedComponent.loadData) {
-              return component.WrappedComponent.loadData();
+              return component.WrappedComponent.loadData(renderProps.params);
             }
           } else if (component.loadData) {
-            return component.loadData();
+            return component.loadData(renderProps.params);
           }
         }
         return [];

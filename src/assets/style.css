@@ -18,7 +18,8 @@ which makes examples clearer.
   margin-top: 10px;
 }
 
-#react-content .products {
+#react-content .products,
+#react-content .product-list {
   text-align: center;
 }
 
@@ -79,4 +80,8 @@ which makes examples clearer.
 .products .tooltip {
   margin-top: 10px;
   max-width: 200px;
+}
+
+.product-link {
+  color: #000;
 }

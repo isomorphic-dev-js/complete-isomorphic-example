@@ -1,0 +1,26 @@
+[
+  {
+    "icon": "coffee",
+    "description": "",
+    "name": "Gifts",
+    "id": "gifts"
+  },
+  {
+    "icon": "food",
+    "description": "",
+    "name": "For Dogs",
+    "id": "dogs"
+  },
+  {
+    "icon": "heart",
+    "description": "",
+    "name": "Treats and Food",
+    "id": "treats-and-food"
+  },
+  {
+    "icon": "paw",
+    "description": "",
+    "name": "Top Picks",
+    "id": "top-picks"
+  }
+]

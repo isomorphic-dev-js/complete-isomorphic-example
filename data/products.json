@@ -1,32 +1,66 @@
-{
-  "mugs": {
-    "items": [],
-    "iconImage": "",
-    "label": "",
-    "description": ""
+[
+  {
+    "name": "Embossed Westie Mug",
+    "description": "All white mug with a Westie's adorable face.",
+    "details": "12oz",
+    "id": "embedded-westie-mug",
+    "price": 15,
+    "thumbnail": "http://localhost:3000/assets/cart-item-placeholder.jpg"
   },
-  "socks": {
-    "items": [],
-    "iconImage": "",
-    "label": "",
-    "description": ""
+  {
+    "name": "Super Cool Tshirt",
+    "description": "This tshirt features an adorable westie face, white art on a grey tshirt",
+    "details": "available in men's sizes S-XL",
+    "price": 30,
+    "id": "super-cool-tshirt",
+    "thumbnail": "http://localhost:3000/assets/cart-item-placeholder.jpg"
   },
-  "collars": {
-    "items": [],
-    "iconImage": "",
-    "label": "",
-    "description": ""
+  {
+    "name": "Westie Throw Blanket",
+    "description": "Perfect addition to your living room and it's warm!",
+    "details": "4x6ft, cotten polyester mix",
+    "price": 45,
+    "id": "westie-throw-blanket",
+    "thumbnail": "http://localhost:3000/assets/cart-item-placeholder.jpg"
   },
-  "leashes": {
-    "items": [],
-    "iconImage": "",
-    "label": "",
-    "description": ""
+  {
+    "name": "Collar",
+    "description": "A simple collar - durable and long lasting",
+    "details": "Sizes xs - m, colors: black, grey, brown or pink",
+    "price": 9,
+    "id": "collar",
+    "thumbnail": "http://localhost:3000/assets/cart-item-placeholder.jpg"
   },
-  "treats": {
-    "items": [],
-    "iconImage": "",
-    "label": "",
-    "description": ""
+  {
+    "name": "Leash - Pattern",
+    "description": "Argyle pattern leash",
+    "details": "6ft, rope",
+    "price": 15,
+    "id": "leash-pattern",
+    "thumbnail": "http://localhost:3000/assets/cart-item-placeholder.jpg"
+  },
+  {
+    "name": "Organic Dog Food",
+    "description": "Organic Adult dog food with salmon and potato.",
+    "details": "8lbs, salmon and potato, limited ingredients",
+    "id": "organic-dog-food",
+    "price": 45,
+    "thumbnail": "http://localhost:3000/assets/cart-item-placeholder.jpg"
+  },
+  {
+    "name": "Organic Bacon Treats",
+    "description": "Your dog's new favorite!",
+    "details": "4oz",
+    "id": "organic-bacon-treats",
+    "price": 10,
+    "thumbnail": "http://localhost:3000/assets/cart-item-placeholder.jpg"
+  },
+  {
+    "name": "Dog Food",
+    "description": "Adult dog food with chicken and rice.",
+    "details": "10lbs, chicken and rice",
+    "id": "dog-food",
+    "price": 35,
+    "thumbnail": "http://localhost:3000/assets/cart-item-placeholder.jpg"
   }
-}
+]

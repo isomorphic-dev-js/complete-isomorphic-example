@@ -4,8 +4,10 @@ import App from '../components/app';
 import Cart from '../components/cart';
 import Payment from '../components/payment';
 import Products from '../components/products';
+import ProductList from '../components/productList';
 import Profile from '../components/profile';
 import Login from '../components/login';
+import Detail from '../components/detail';
 import { sendData } from '../analytics.es6';
 
 let beforeRouteRender = (dispatch, prevState, nextState) => {
@@ -17,10 +19,10 @@ let beforeRouteRender = (dispatch, prevState, nextState) => {
         component.displayName.toLowerCase().indexOf('connect') > -1
       ) {
         if (component.WrappedComponent.loadData) {
-          return component.WrappedComponent.loadData();
+          return component.WrappedComponent.loadData(nextState.params);
         }
       } else if (component.loadData) {
-        return component.loadData();
+        return component.loadData(nextState.params);
       }
     }
     return [];
@@ -31,7 +33,7 @@ let beforeRouteRender = (dispatch, prevState, nextState) => {
   });
 
   sendData({
-    path: routes.location,
+    location: nextState.location.pathname,
     type: 'navigation'
   });
 };
@@ -43,6 +45,8 @@ export const routes = (onChange = () => {}) => {
       <Route path="cart" component={Cart} />
       <Route path="cart/payment" component={Payment} />
       <Route path="products" component={Products} />
+      <Route path="products/:category" component={ProductList} />
+      <Route path="product/detail/:product" component={Detail} />
       <Route path="profile" component={Profile} />
       <Route path="login" component={Login} />
     </Route>

@@ -31,7 +31,7 @@ const HTML = (props) => {
 
 HTML.propTypes = {
   html: React.PropTypes.string,
-  serverState: React.PropTypes
+  serverState: React.PropTypes.string
 };
 
 export default HTML;

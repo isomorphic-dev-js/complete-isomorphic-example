@@ -1,3 +1,15 @@
+const webpack = require('webpack');
+
+const injectVariables = new webpack.DefinePlugin({
+  process: {
+    env: {
+      NODE_ENV: JSON.stringify("development"),
+      BROWSER: JSON.stringify('true'),
+      SERVER: JSON.stringify('false')
+    }
+  }
+});
+
 module.exports = {
   entry: "./src/main.jsx",
   devtool: "source-map",
@@ -23,5 +35,8 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.css', '.es6', '.json']
-  }
+  },
+  plugins: [
+    injectVariables
+  ]
 };

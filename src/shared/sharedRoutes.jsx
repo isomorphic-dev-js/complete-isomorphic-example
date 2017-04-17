@@ -38,6 +38,11 @@ let beforeRouteRender = (dispatch, prevState, nextState) => {
   });
 };
 
+const developmentRoute =
+    process.env.NODE_ENV !== 'production' ?
+      <Route path="/dev-test" component={App} />
+      : null;
+
 export const routes = (onChange = () => {}) => {
   return (
     <Route path="/" component={App} onChange={onChange}>
@@ -49,6 +54,7 @@ export const routes = (onChange = () => {}) => {
       <Route path="product/detail/:product" component={Detail} />
       <Route path="profile" component={Profile} />
       <Route path="login" component={Login} />
+      {developmentRoute}
     </Route>
   );
 };

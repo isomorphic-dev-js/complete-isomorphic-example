@@ -1,10 +1,22 @@
 import React from 'react';
 
 const HTML = (props) => {
+  const metatagsArray = [];
+  props.metatags.forEach((item) => {
+    metatagsArray.push(
+      <meta {...item} />
+    );
+  });
+
   return (
     <html lang="en">
       <head>
-        <title>All Things Westies</title>
+        <title
+          dangerouslySetInnerHTML={{
+            __html: props.title || 'All Things Westies'
+          }}
+        />
+        {metatagsArray}
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css"
@@ -31,7 +43,13 @@ const HTML = (props) => {
 
 HTML.propTypes = {
   html: React.PropTypes.string,
-  serverState: React.PropTypes.string
+  serverState: React.PropTypes.string,
+  title: React.PropTypes.string,
+  metatags: React.PropTypes.arrayOf(React.PropTypes.shape({
+    content: React.PropTypes.string.isRequired,
+    name: React.PropTypes.string,
+    property: React.PropTypes.string
+  }))
 };
 
 export default HTML;

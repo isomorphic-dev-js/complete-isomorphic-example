@@ -6,8 +6,42 @@ import productActions from '../shared/products-action-creators.es6';
 
 class Detail extends React.Component {
 
-  static createMetatags() {
-    return [];
+  static createTitle(props) {
+    return `${props.name} - All Things Westies`;
+  }
+
+  static getTitle(params, store) {
+    const currentProduct = store.products && store.products.currentProduct;
+
+    return Detail.createTitle(currentProduct);
+  }
+
+  static createMetatags(params, store) {
+    const tags = [];
+    const item = store.products ? store.products.currentProduct : null;
+    if (item) {
+      tags.push({
+        name: 'description',
+        content: item.description
+      });
+      tags.push({
+        property: 'og:description',
+        content: item.description
+      });
+      tags.push({
+        property: 'og:title',
+        content: item.name
+      });
+      tags.push({
+        property: 'og:url',
+        content: `http://localhost:3000/product/detail/${item.id}`
+      });
+      tags.push({
+        property: 'og:image',
+        content: item.thumbnail
+      });
+    }
+    return tags;
   }
 
   static loadData(params) {
@@ -19,6 +53,14 @@ class Detail extends React.Component {
   constructor(props) {
     super(props);
     this.addToCart = this.addToCart.bind(this);
+  }
+
+  componentDidMount() {
+    document.getElementByTag('title')[0].innerHTMl = Detail.createTitle(this.props);
+  }
+
+  componentDidUpdate() {
+    document.getElementByTag('title')[0].innerHTMl = Detail.createTitle(this.props);
   }
 
   addToCart() {

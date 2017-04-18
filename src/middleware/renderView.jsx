@@ -44,13 +44,31 @@ export default function renderView(req, res, next) {
       Promise.all(promises).then(() => {
         const serverState = store.getState();
         const stringifiedServerState = JSON.stringify(serverState);
+
+        const seoTags = flattenStaticFunction(
+          renderProps,
+          'createMetatags',
+          serverState
+        );
+
+        const title = flattenStaticFunction(
+          renderProps,
+          'getTitle',
+          serverState
+        );
+
         const app = renderToString(
           <Provider store={store}>
             <RouterContext routes={routes} {...renderProps} />
           </Provider>
         );
         const html = renderToString(
-          <HTML html={app} serverState={stringifiedServerState} />
+          <HTML
+            html={app}
+            serverState={stringifiedServerState}
+            metatags={seoTags}
+            title={title}
+          />
         );
         return res.send(`<!DOCTYPE html>${html}`);
       }).catch(() => {

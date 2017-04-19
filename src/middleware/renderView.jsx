@@ -6,17 +6,25 @@ import { routes } from '../shared/sharedRoutes';
 import initRedux from '../shared/init-redux.es6';
 import HTML from '../components/html';
 
-function flattenStaticFunction(renderProps, staticFnName, store = {}) {
+function flattenStaticFunction(renderProps, staticFnName, store = {}, request) {
   let results = renderProps.components.map((component) => {
     if (component) {
       if (component.displayName &&
         component.displayName.toLowerCase().indexOf('connect') > -1
       ) {
         if (component.WrappedComponent[staticFnName]) {
-          return component.WrappedComponent[staticFnName](renderProps.params, store);
+          return component.WrappedComponent[staticFnName](
+            renderProps.params,
+            store,
+            request
+          );
         }
       } else if (component[staticFnName]) {
-        return component[staticFnName](renderProps.params, store);
+        return component[staticFnName](
+          renderProps.params,
+          store,
+          request
+        );
       }
     }
     return [];
@@ -37,7 +45,12 @@ export default function renderView(req, res, next) {
   const handleMatchResult = (error, redirectLocation, renderProps) => {
     if (!error && !redirectLocation && renderProps) {
       const store = initRedux();
-      const actions = flattenStaticFunction(renderProps, 'loadData');
+      const actions = flattenStaticFunction(
+        renderProps,
+        'loadData',
+        null,
+        req
+      );
       const promises = actions.map((initialAction) => {
         return store.dispatch(initialAction());
       });

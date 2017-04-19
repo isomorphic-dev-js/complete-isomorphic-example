@@ -56,11 +56,11 @@ class Detail extends React.Component {
   }
 
   componentDidMount() {
-    document.getElementByTag('title')[0].innerHTMl = Detail.createTitle(this.props);
+    document.getElementsByTagName('title')[0].innerHTMl = Detail.createTitle(this.props);
   }
 
   componentDidUpdate() {
-    document.getElementByTag('title')[0].innerHTMl = Detail.createTitle(this.props);
+    document.getElementsByTagName('title')[0].innerHTMl = Detail.createTitle(this.props);
   }
 
   addToCart() {

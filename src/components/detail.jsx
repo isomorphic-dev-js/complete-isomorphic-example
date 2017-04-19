@@ -35,13 +35,15 @@ class Detail extends React.Component {
 
   render() {
     return (
-      <div className="ui card middle">
-        <h2>{this.props.name}</h2>
-        <img src={this.props.thumbnail} alt={this.props.description} />
-        <p>{this.props.description}</p>
-        <div>Price: <span>{this.props.price}</span></div>
-        <div>{this.props.details}</div>
-        <button onClick={this.addToCart}>Add To Cart</button>
+      <div className="ui one column middle">
+        <h2 className="ui dividing header">{this.props.name}</h2>
+        <img className="ui large image" src={this.props.thumbnail} alt={this.props.description} />
+        <div className="ui message">
+          <p>{this.props.description}</p>
+          <div>Price: <span>{this.props.price}</span></div>
+          <p>{this.props.details}</p>
+        </div>
+        <button className="ui button" onClick={this.addToCart}>Add To Cart</button>
       </div>
     );
   }

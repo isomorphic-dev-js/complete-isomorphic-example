@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderToString } from 'react-dom/server';
+import { renderToString } from 'react-dom-stream/server';
 import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
 import { routes } from '../shared/sharedRoutes';
@@ -70,20 +70,24 @@ export default function renderView(req, res, next) {
           serverState
         );
 
-        const app = renderToString(
+        const streamApp = renderToString(
           <Provider store={store}>
             <RouterContext routes={routes} {...renderProps} />
           </Provider>
         );
-        const html = renderToString(
+        const streamHTML = renderToString(
           <HTML
-            html={app}
+            html={streamApp}
             serverState={stringifiedServerState}
             metatags={seoTags}
             title={title}
           />
         );
-        return res.send(`<!DOCTYPE html>${html}`);
+        // return res.send(`<!DOCTYPE html>${html}`);
+        streamHTML.pipe(res, {end: false});
+    	streamHTML.on("end", function() {
+    		res.end();
+    	});
       }).catch(() => {
         return next();
       });

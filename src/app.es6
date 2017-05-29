@@ -1,7 +1,14 @@
 import express from 'express';
 import fs from 'fs';
+import http from 'http';
 import bodyParser from 'body-parser';
 import renderViewMiddleware from './middleware/renderView';
+
+http.Agent({
+  keepAlive: true,
+  keepAliveMsecs: 1500,
+  maxFreeSockets: 1024
+});
 
 const app = express();
 

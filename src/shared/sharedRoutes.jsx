@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from '../components/app';
-import Cart from '../components/cart';
+// leaving this here as a reminder to fix after updating versions of webpack
+// import Cart from '../components/cart';
 import Payment from '../components/payment';
 import Products from '../components/products';
 import ProductList from '../components/productList';
@@ -47,7 +48,14 @@ export const routes = (onChange = () => {}) => {
   return (
     <Route path="/" component={App} onChange={onChange}>
       <IndexRoute component={Products} />
-      <Route path="cart" component={Cart} />
+      <Route
+        path="cart"
+        getComponent={(location, cb) => {
+          require.ensure([], (require) => {
+            cb(null, require('../components/cart').default);
+          }, 'Cart');
+        }}
+      />
       <Route path="cart/payment" component={Payment} />
       <Route path="products" component={Products} />
       <Route path="products/:category" component={ProductList} />

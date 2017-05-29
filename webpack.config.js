@@ -15,7 +15,8 @@ module.exports = {
   devtool: "source-map",
   output: {
     path: __dirname + '/src/',
-    filename: "browser.js"
+    filename: "browser.js",
+    chunkFilename: "browser-[name].js"
   },
   module: {
     loaders: [

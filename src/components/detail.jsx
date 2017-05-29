@@ -59,6 +59,19 @@ class Detail extends React.Component {
     document.getElementsByTagName('title')[0].innerHTMl = Detail.createTitle(this.props);
   }
 
+  shouldComponentUpdate(nextProps) {
+    if (this.props.name === nextProps.name &&
+        this.props.description === nextProps.description &&
+        this.props.details === nextProps.details &&
+        this.props.price === nextProps.price &&
+        this.props.thumbnail === nextProps.thumbnail) {
+      // do not re render
+      console.log("not rerendering detail component");
+      return false;
+    }
+    return true;
+  }
+
   componentDidUpdate() {
     document.getElementsByTagName('title')[0].innerHTMl = Detail.createTitle(this.props);
   }

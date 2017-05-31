@@ -5,6 +5,7 @@ import { match, RouterContext } from 'react-router';
 import { routes } from '../shared/sharedRoutes';
 import initRedux from '../shared/init-redux.es6';
 import HTML from '../components/html';
+import cache from '../shared/cache.es6';
 
 function flattenStaticFunction(renderProps, staticFnName, store = {}, request) {
   let results = renderProps.components.map((component) => {
@@ -44,6 +45,12 @@ export default function renderView(req, res, next) {
   };
   const handleMatchResult = (error, redirectLocation, renderProps) => {
     if (!error && !redirectLocation && renderProps) {
+    //  use caching or streaming, not both
+    //   const cachedPage = cache.get(req.url);
+    //   if (cachedPage) {
+    //     return res.send(cachedPage);
+    //   }
+
       const store = initRedux();
       const actions = flattenStaticFunction(
         renderProps,
@@ -84,20 +91,20 @@ export default function renderView(req, res, next) {
           />
         );
 
+        // use caching or streaming, not both
         streamHTML.pipe(res, { end: false });
         streamHTML.on('end', () => {
           res.end();
         });
+
+        // use caching or sreaming, not both.
+        // cache.set(req.url, `<!DOCTYPE html>${html}`);
         // return res.send(`<!DOCTYPE html>${html}`);
-        streamHTML.pipe(res, {end: false});
-    	streamHTML.on("end", function() {
-    		res.end();
-    	});
       }).catch(() => {
         return next();
       });
     } else {
-      next();
+      return next();
     }
   };
   match(matchOpts, handleMatchResult);

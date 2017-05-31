@@ -19,6 +19,7 @@
     "classnames": "^2.2.5",
     "express": "^4.14.0",
     "isomorphic-fetch": "^2.2.1",
+    "lru-cache": "^4.0.2",
     "node-fetch": "^1.6.3",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
@@ -28,7 +29,8 @@
     "redux": "^3.5.2",
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.1.0",
-    "ua-parser-js": "^0.7.12"
+    "ua-parser-js": "^0.7.12",
+    "universal-cookie": "^2.0.8"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",

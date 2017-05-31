@@ -1,5 +1,6 @@
 import {
-  PARSE_USER_AGENT
+  PARSE_USER_AGENT,
+  STORE_USER_ID
 } from './app-action-creators.es6';
 
 export default function app(state = {}, action) {
@@ -8,6 +9,11 @@ export default function app(state = {}, action) {
       return {
         ...state,
         userAgent: action.userAgent ? action.userAgent : state.userAgent
+      };
+    case STORE_USER_ID:
+      return {
+        ...state,
+        userId: action.userId
       };
     default:
       return state;

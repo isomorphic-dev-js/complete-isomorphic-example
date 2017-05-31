@@ -1,13 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Banner from './banner';
-import { parseUserAgent } from '../shared/app-action-creators.es6';
+import {
+  parseUserAgent,
+  storeUserId
+} from '../shared/app-action-creators.es6';
 
 class App extends React.Component {
 
   static loadData(params, store, request = {}) {
     return [
-      parseUserAgent.bind(null, request.headers)
+      parseUserAgent.bind(null, request.headers),
+      storeUserId.bind(null, request.headers)
     ];
   }
 

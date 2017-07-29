@@ -19,7 +19,7 @@ module.exports = {
     chunkFilename: "browser-[name].js"
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(jsx|es6)$/,
         exclude: /node_modules|examples/,
@@ -28,14 +28,11 @@ module.exports = {
       {
         test: /\.css$/,
         loaders: ['style', 'css']
-      },
-      {
-        test: /\.json$/, loader: 'json'
       }
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.css', '.es6', '.json']
+    extensions: ['.js', '.jsx', '.css', '.es6', '.json']
   },
   plugins: [
     injectVariables

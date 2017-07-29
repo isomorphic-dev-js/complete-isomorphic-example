@@ -11,7 +11,7 @@ export default function (initialStore = {}) {
   const reducer = combineReducers({
     cart
   });
-  const middleware = [thunkMiddleware, loggerMiddleware()];
+  const middleware = [thunkMiddleware, loggerMiddleware];
   return compose(
       applyMiddleware(...middleware)
     )(createStore)(reducer, initialStore);

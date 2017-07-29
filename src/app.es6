@@ -43,10 +43,6 @@ app.get('/api/blog', (req, res) => {
   });
 });
 
-app.get('/test', (req, res) => {
-  res.send('Test route success!');
-});
-
 app.listen(3000, () => {
   console.log('App listening on port: 3000');
 });

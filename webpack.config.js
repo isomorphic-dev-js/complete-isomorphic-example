@@ -6,7 +6,7 @@ module.exports = {
     filename: "browser.js"
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(jsx|es6)$/,
         exclude: /node_modules|examples/,
@@ -19,6 +19,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.css', '.es6']
+    extensions: ['.js', '.jsx', '.css', '.es6', '.json']
   }
 };

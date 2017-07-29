@@ -13,7 +13,7 @@ export default function (initialStore = {}) {
     products,
     cart
   });
-  const middleware = [thunkMiddleware, loggerMiddleware()];
+  const middleware = [thunkMiddleware, loggerMiddleware];
   let newCompose;
   if (typeof window !== 'undefined') {
     newCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;

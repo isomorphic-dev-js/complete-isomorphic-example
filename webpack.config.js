@@ -20,5 +20,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.css', '.es6', '.json']
+  },
+  externals: {
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true
   }
 };

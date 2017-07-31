@@ -1,8 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from '../components/app';
-// leaving this here as a reminder to fix after updating versions of webpack
-// import Cart from '../components/cart';
 import Payment from '../components/payment';
 import Products from '../components/products';
 import ProductList from '../components/productList';
@@ -10,6 +8,7 @@ import Profile from '../components/profile';
 import Login from '../components/login';
 import Detail from '../components/detail';
 import { sendData } from '../analytics.es6';
+
 
 let beforeRouteRender = (dispatch, prevState, nextState) => {
   const { routes } = nextState;
@@ -51,9 +50,21 @@ export const routes = (onChange = () => {}) => {
       <Route
         path="cart"
         getComponent={(location, cb) => {
-          require.ensure([], (require) => {
-            cb(null, require('../components/cart').default);
-          }, 'Cart');
+          import(
+            /* webpackChunkName: "cart" */
+            /* webpackMode: "lazy" */
+            './../components/cart')
+          .then((module) => {
+            cb(null, module.default);
+            onChange(null, {
+              routes: [
+                {component: module.default}
+              ]
+            });
+          })
+          .catch(error =>
+            console.log('An error occurred while loading the component', error)
+          );
         }}
       />
       <Route path="cart/payment" component={Payment} />

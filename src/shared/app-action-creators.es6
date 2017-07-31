@@ -1,5 +1,5 @@
 import UAParser from 'ua-parser-js';
-import cookies from '../shared/cookies.es6';
+import cookies from './cookies.es6';
 
 export const PARSE_USER_AGENT = 'PARSE_USER_AGENT';
 export const STORE_USER_ID = 'STORE_USER_ID';

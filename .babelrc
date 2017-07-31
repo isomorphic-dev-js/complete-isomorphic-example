@@ -1,5 +1,18 @@
 {
   "presets": ["es2015", "react"],
+  "env": {
+    "webpack-env": {
+      "plugins": [
+        "syntax-dynamic-import"
+      ]
+    },
+    "development": {
+      "plugins": [
+        "syntax-dynamic-import",
+        "dynamic-import-node"
+      ]
+    }
+  },
   "plugins": [
     "transform-es2015-destructuring",
     "transform-es2015-parameters",

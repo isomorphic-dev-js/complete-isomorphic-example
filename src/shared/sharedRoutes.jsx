@@ -51,20 +51,20 @@ export const routes = (onChange = () => {}) => {
         path="cart"
         getComponent={(location, cb) => {
           import(
-              /* webpackChunkName: "cart" */
-              /* webpackMode: "lazy" */
-              './../components/cart')
-            .then((module) => {
-              cb(null, module.default);
-              onChange(null, {
-                routes: [
-                  {component: module.default}
-                ]
-              });
-            })
-            .catch(error =>
-              console.log('An error occurred while loading the component', error)
-            );
+            /* webpackChunkName: "cart" */
+            /* webpackMode: "lazy" */
+            './../components/cart')
+          .then((module) => {
+            cb(null, module.default);
+            onChange(null, {
+              routes: [
+                {component: module.default}
+              ]
+            });
+          })
+          .catch(error =>
+            console.log('An error occurred while loading the component', error)
+          );
         }}
       />
       <Route path="cart/payment" component={Payment} />

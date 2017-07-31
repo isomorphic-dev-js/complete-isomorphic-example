@@ -23,7 +23,10 @@ module.exports = {
       {
         test: /\.(jsx|es6)$/,
         exclude: /node_modules|examples/,
-        loader: "babel-loader"
+        loader: "babel-loader",
+        options: {
+          forceEnv: 'webpack-env'
+        }
       },
       {
         test: /\.css$/,

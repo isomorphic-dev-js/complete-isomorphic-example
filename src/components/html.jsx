@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const HTML = (props) => {
   return (
@@ -22,7 +23,7 @@ const HTML = (props) => {
 };
 
 HTML.propTypes = {
-  renderedToStringComponents: React.PropTypes.string
+  renderedToStringComponents: PropTypes.string
 };
 
 export default HTML;

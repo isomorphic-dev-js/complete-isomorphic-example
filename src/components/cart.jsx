@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getCartItems } from '../shared/cart-action-creators.es6';
@@ -67,11 +68,11 @@ class Cart extends Component {
 }
 
 Cart.propTypes = {
-  items: React.PropTypes.arrayOf(
-    React.PropTypes.shape({
-      name: React.PropTypes.string.isRequired,
-      price: React.PropTypes.number.isRequired,
-      thumbnail: React.PropTypes.string.isRequired
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      thumbnail: PropTypes.string.isRequired
     })
   )
 };

@@ -32,7 +32,7 @@ App.propTypes = {
   children: PropTypes.element,
   router: PropTypes.shape({
     push: PropTypes.function
-  })
+  }),
   children: PropTypes.element.isRequired
 };
 

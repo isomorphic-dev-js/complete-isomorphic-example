@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { getCartItems } from '../shared/cart-action-creators.es6';
 import Item from './item';
-import cartActions from '../shared/cart-action-creators.es6';
 
 class Cart extends Component {
 
-  static loadData() {
+  static prefetchActions() {
     return [
-      cartActions.getCartItems
+      getCartItems
     ];
   }
 
@@ -19,8 +20,9 @@ class Cart extends Component {
 
   getTotal() {
     let total = 0;
-    if (this.props.items) {
-      total = this.props.items.reduce((prev, current) => {
+    const items = this.props.items;
+    if (items) {
+      total = items.reduce((prev, current) => {
         return prev + current.price;
       }, total);
     }
@@ -32,13 +34,14 @@ class Cart extends Component {
   }
 
   renderItems() {
-    const items = [];
-    if (this.props.items) {
-      this.props.items.forEach((item, index) => {
-        items.push(<Item key={index} {...item} />);
+    const components = [];
+    const items = this.props.items;
+    if (items) {
+      items.forEach((item, index) => {
+        components.push(<Item key={index} {...item} />);
       });
     }
-    return items;
+    return components;
   }
 
   render() {
@@ -50,11 +53,12 @@ class Cart extends Component {
         <div className="ui right rail">
           <div className="ui segment">
             <span>Total: </span><span>${this.getTotal()}</span>
+            <div>Placeholder</div>
             <button
               onClick={this.proceedToCheckout}
               className="ui positive basic button"
             >
-                Checkout
+              Checkout
             </button>
           </div>
         </div>
@@ -64,11 +68,13 @@ class Cart extends Component {
 }
 
 Cart.propTypes = {
-  items: React.PropTypes.arrayOf(React.PropTypes.shape({
-    name: React.PropTypes.string,
-    price: React.PropTypes.number,
-    thumbnail: React.PropTypes.string
-  }))
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      thumbnail: PropTypes.string.isRequired
+    })
+  )
 };
 
 function mapStateToProps(state) {
@@ -80,7 +86,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    cartActions: bindActionCreators(cartActions, dispatch)
+    cartActions: bindActionCreators([getCartItems], dispatch)
   };
 }
 

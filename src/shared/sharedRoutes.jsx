@@ -4,7 +4,7 @@ import App from '../components/app';
 import Cart from '../components/cart';
 import Products from '../components/products';
 import Detail from '../components/detail';
-import Blog from '../components/blog';
+import Profile from '../components/profile';
 // import NotFound from '../components/not-found';
 
 const routes = (
@@ -13,7 +13,7 @@ const routes = (
     <Route path="cart" component={Cart} />
     <Route path="products" component={Products} />
     <Route path="product/detail/:id" component={Detail} />
-    <Route path="blog" component={Blog} />
+    <Route path="profile" component={Profile} />
   </Route>
 );
 

@@ -17,6 +17,7 @@ const HTML = (props) => {
           }}
         />
         {metatagsArray}
+        <link rel="shortcut icon" href="/assets/favicon.ico" />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css"

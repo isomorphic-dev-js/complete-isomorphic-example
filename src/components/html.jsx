@@ -5,6 +5,7 @@ const HTML = (props) => {
     <html lang="en">
       <head>
         <title>All Things Westies</title>
+        <link rel="shortcut icon" href="/assets/favicon.ico" />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css"

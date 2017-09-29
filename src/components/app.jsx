@@ -19,7 +19,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  children: React.PropTypes.element
+  children: PropTypes.element.isRequired
 };
 
 export default App;

@@ -1,10 +1,10 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
+import { Provider } from 'react-redux';
 import { routes } from '../shared/sharedRoutes';
-import initRedux from '../shared/init-redux.es6';
 import HTML from '../components/html';
+import initRedux from '../shared/init-redux.es6';
 
 export default function renderView(req, res, next) {
   const matchOpts = {
@@ -17,18 +17,17 @@ export default function renderView(req, res, next) {
       let actions = renderProps.components.map((component) => {
         if (component) {
           if (component.displayName &&
-            component.displayName.toLowerCase().indexOf('connect') > -1
+              component.displayName.toLowerCase().indexOf('connect') > -1
           ) {
-            if (component.WrappedComponent.loadData) {
-              return component.WrappedComponent.loadData();
+            if (component.WrappedComponent.prefetchActions) {
+              return component.WrappedComponent.prefetchActions();
             }
-          } else if (component.loadData) {
-            return component.loadData();
+          } else if (component.prefetchActions) {
+            return component.prefetchActions();
           }
         }
         return [];
       });
-
       actions = actions.reduce((flat, toFlatten) => {
         return flat.concat(toFlatten);
       }, []);
@@ -45,15 +44,14 @@ export default function renderView(req, res, next) {
           </Provider>
         );
         const html = renderToString(
-          <HTML html={app} serverState={stringifiedServerState} />
+          <HTML renderedToStringComponents={app} serverState={stringifiedServerState} />
         );
         return res.send(`<!DOCTYPE html>${html}`);
-      }).catch(() => {
-        return next();
       });
     } else {
       next();
     }
   };
+
   match(matchOpts, handleMatchResult);
 }

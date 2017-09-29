@@ -29,10 +29,11 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  children: React.PropTypes.element,
-  router: React.PropTypes.shape({
-    push: React.PropTypes.function
+  children: PropTypes.element,
+  router: PropTypes.shape({
+    push: PropTypes.function
   })
+  children: PropTypes.element.isRequired
 };
 
 export default App;

@@ -6,7 +6,7 @@ const app = express();
 app.get('/api/user/cart', (req, res) => {
   fs.readFile('./data/cart.json', 'utf8', (err, data) => {
     if (err) {
-      return res.status(404).send;
+      return res.sendStatus(404);
     }
     return res.send(JSON.parse(data));
   });
@@ -15,7 +15,7 @@ app.get('/api/user/cart', (req, res) => {
 app.get('/api/products/:type', (req, res) => {
   fs.readFile('./data/products.json', 'utf8', (err, data) => {
     if (err) {
-      return res.status(404).send;
+      return res.sendStatus(404);
     }
     const products = JSON.parse(data);
     return res.send(products[req.params.type].items);
@@ -25,7 +25,7 @@ app.get('/api/products/:type', (req, res) => {
 app.get('/api/products', (req, res) => {
   fs.readFile('./data/products.json', 'utf8', (err, data) => {
     if (err) {
-      return res.status(404).send;
+      return res.sendStatus(404);
     }
     return res.send(JSON.parse(data));
   });
@@ -34,7 +34,7 @@ app.get('/api/products', (req, res) => {
 app.get('/api/user', (req, res) => {
   fs.readFile('./data/user.json', 'utf8', (err, data) => {
     if (err) {
-      return res.status(404).send;
+      return res.sendStatus(404);
     }
     return res.send(JSON.parse(data));
   });

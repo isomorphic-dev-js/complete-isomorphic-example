@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const HTML = (props) => {
   return (
@@ -15,7 +16,7 @@ const HTML = (props) => {
       <body>
         <div
           id="react-content"
-          dangerouslySetInnerHTML={{ __html: props.html }}
+          dangerouslySetInnerHTML={{ __html: props.renderedToStringComponents }}
         />
         <script dangerouslySetInnerHTML={{
           __html: `
@@ -31,8 +32,8 @@ const HTML = (props) => {
 };
 
 HTML.propTypes = {
-  html: React.PropTypes.string,
-  serverState: React.PropTypes
+  renderedToStringComponents: PropTypes.string.isRequired,
+  serverState: PropTypes.string.isRequired
 };
 
 export default HTML;

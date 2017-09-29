@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const HTML = (props) => {
   return (
@@ -9,12 +10,12 @@ const HTML = (props) => {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css"
         />
-        <link rel="stylesheet" href="assets/style.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
       </head>
       <body>
         <div
           id="react-content"
-          dangerouslySetInnerHTML={{ __html: props.html }}
+          dangerouslySetInnerHTML={{ __html: props.renderedToStringComponents }}
         />
         <script type="application/javascript" src="browser.js" />
       </body>
@@ -23,7 +24,7 @@ const HTML = (props) => {
 };
 
 HTML.propTypes = {
-  html: React.PropTypes.string
+  renderedToStringComponents: PropTypes.string
 };
 
 export default HTML;

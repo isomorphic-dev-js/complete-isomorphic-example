@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import Banner from './banner';
 
@@ -32,9 +33,9 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  children: React.PropTypes.element,
-  router: React.PropTypes.shape({
-    push: React.PropTypes.function
+  children: PropTypes.element.isRequired,
+  router: PropTypes.shape({
+    push: PropTypes.function
   })
 };
 

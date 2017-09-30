@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Item from './item';
@@ -64,10 +65,10 @@ class Cart extends Component {
 }
 
 Cart.propTypes = {
-  items: React.PropTypes.arrayOf(React.PropTypes.shape({
-    name: React.PropTypes.string,
-    price: React.PropTypes.number,
-    thumbnail: React.PropTypes.string
+  items: PropTypes.arrayOf(React.PropTypes.shape({
+    name: PropTypes.string,
+    price: PropTypes.number,
+    thumbnail: PropTypes.string
   }))
 };
 

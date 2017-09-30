@@ -15,11 +15,11 @@ let beforeRouteRender = (dispatch, prevState, nextState) => {
       if (component.displayName &&
         component.displayName.toLowerCase().indexOf('connect') > -1
       ) {
-        if (component.WrappedComponent.loadData) {
-          return component.WrappedComponent.loadData();
+        if (component.WrappedComponent.prefetchActions) {
+          return component.WrappedComponent.prefetchActions();
         }
-      } else if (component.loadData) {
-        return component.loadData();
+      } else if (component.prefetchActions) {
+        return component.prefetchActions();
       }
     }
     return [];
@@ -37,7 +37,7 @@ export const routes = (onChange = () => {}) => {
       <Route path="cart" component={Cart} />
       <Route path="products" component={Products} />
       <Route path="product/detail/:id" component={Detail} />
-      <Route path="profile" component={Profile} />
+      <Route path="profile"  component={Profile} />
     </Route>
   );
 };

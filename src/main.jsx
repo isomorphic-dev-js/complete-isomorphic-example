@@ -14,7 +14,8 @@ function init() {
   ReactDOM.render(
     <Provider store={store}>
       <Router routes={sharedRoutes} history={browserHistory} />
-    </Provider>, document.getElementById('react-content'));
+    </Provider>,
+    document.getElementById('react-content'));
 }
 
 init();

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Banner extends React.Component {
@@ -49,7 +50,7 @@ class Banner extends React.Component {
 }
 
 Banner.propTypes = {
-  children: React.PropTypes.element
+  children: PropTypes.element
 };
 
 export default Banner;

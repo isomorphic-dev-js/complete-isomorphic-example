@@ -1,11 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const HTML = (props) => {
   return (
     <html lang="en">
       <head>
         <title>All Things Westies</title>
-        <link rel="shortcut icon" href="/assets/favicon.ico" />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css"
@@ -31,8 +31,8 @@ const HTML = (props) => {
 };
 
 HTML.propTypes = {
-  html: React.PropTypes.string,
-  serverState: React.PropTypes.string
+  html: PropTypes.string,
+  serverState: PropTypes.string
 };
 
 export default HTML;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const HTML = (props) => {
   const metatagsArray = [];
@@ -43,6 +44,7 @@ const HTML = (props) => {
 };
 
 HTML.propTypes = {
+<<<<<<< HEAD
   html: React.PropTypes.string,
   serverState: React.PropTypes.string,
   title: React.PropTypes.string,
@@ -51,6 +53,10 @@ HTML.propTypes = {
     name: React.PropTypes.string,
     property: React.PropTypes.string
   }))
+=======
+  html: PropTypes.string,
+  serverState: PropTypes.string
+>>>>>>> 5c456cd... chore: fix prop types issues
 };
 
 export default HTML;

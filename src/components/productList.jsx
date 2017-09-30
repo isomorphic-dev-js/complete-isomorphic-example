@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -53,15 +54,15 @@ class ProductList extends React.Component {
 }
 
 ProductList.propTypes = {
-  items: React.PropTypes.arrayOf(React.PropTypes.shape({
-    name: React.PropTypes.string,
-    description: React.PropTypes.string,
-    details: React.PropTypes.string,
-    id: React.PropTypes.string,
-    price: React.PropTypes.number,
-    thumbnail: React.PropTypes.string
+  items: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    description: PropTypes.string,
+    details: PropTypes.string,
+    id: PropTypes.string,
+    price: PropTypes.number,
+    thumbnail: PropTypes.string
   })),
-  query: React.PropTypes.string
+  query: PropTypes.string
 };
 
 function mapStateToProps(state) {

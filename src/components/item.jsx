@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Item = (props) => {
   return (
@@ -17,9 +18,9 @@ const Item = (props) => {
 };
 
 Item.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  price: React.PropTypes.number.isRequired,
-  thumbnail: React.PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  thumbnail: PropTypes.string.isRequired
 };
 
 export default Item;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import cartActions from '../shared/cart-action-creators.es6';
@@ -92,13 +93,13 @@ class Detail extends React.Component {
 }
 
 Detail.propTypes = {
-  name: React.PropTypes.string,
-  description: React.PropTypes.string,
-  details: React.PropTypes.string,
-  price: React.PropTypes.number,
-  thumbnail: React.PropTypes.string,
-  cartActions: React.PropTypes.shape({
-    addItemToCart: React.PropTypes.func
+  name: PropTypes.string,
+  description: PropTypes.string,
+  details: PropTypes.string,
+  price: PropTypes.number,
+  thumbnail: PropTypes.string,
+  cartActions: PropTypes.shape({
+    addItemToCart: PropTypes.func
   })
 };
 

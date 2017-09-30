@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Profile extends React.Component {
 
@@ -16,10 +17,10 @@ class Profile extends React.Component {
 }
 
 Profile.propTypes = {
-  router: React.PropTypes.shape({
-    push: React.PropTypes.function
+  router: PropTypes.shape({
+    push: PropTypes.function
   }),
-  user: React.PropTypes.bool
+  user: PropTypes.bool
 };
 
 export default Profile;

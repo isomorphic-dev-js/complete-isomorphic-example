@@ -1,3 +1,13 @@
+var webpackConfig = require('./webpack.config.js');
+
+Object.assign(webpackConfig, {
+  externals: {
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': 'window'
+  }
+});
+
 module.exports = (config) => {
   config.set({
     frameworks: ['mocha', 'chai-sinon'],

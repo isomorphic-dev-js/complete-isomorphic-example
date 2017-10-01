@@ -18,11 +18,11 @@ let beforeRouteRender = (dispatch, prevState, nextState) => {
       if (component.displayName &&
         component.displayName.toLowerCase().indexOf('connect') > -1
       ) {
-        if (component.WrappedComponent.loadData) {
-          return component.WrappedComponent.loadData(nextState.params);
+        if (component.WrappedComponent.prefetchActions) {
+          return component.WrappedComponent.prefetchActions(nextState.params);
         }
-      } else if (component.loadData) {
-        return component.loadData(nextState.params);
+      } else if (component.prefetchActions) {
+        return component.prefetchActions(nextState.params);
       }
     }
     return [];

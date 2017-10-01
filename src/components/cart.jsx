@@ -65,7 +65,7 @@ class Cart extends Component {
 }
 
 Cart.propTypes = {
-  items: PropTypes.arrayOf(React.PropTypes.shape({
+  items: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     price: PropTypes.number,
     thumbnail: PropTypes.string

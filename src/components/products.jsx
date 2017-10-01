@@ -32,7 +32,7 @@ class Products extends React.Component {
   }
 
   componentWillUpdate(nextProps) {
-    if (nextProps.query.length > 0) {
+    if (nextProps.query && nextProps.query.length > 0) {
       clearTimeout(this.clearTimer);
     }
     console.log('cWU');

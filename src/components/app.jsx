@@ -32,7 +32,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  children: React.PropTypes.element,
+  children: React.PropTypes.object,
   router: React.PropTypes.shape({
     push: React.PropTypes.function
   })

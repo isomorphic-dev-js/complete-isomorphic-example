@@ -4,6 +4,7 @@ import App from '../components/app';
 import Cart from '../components/cart';
 import Products from '../components/products';
 import Profile from '../components/profile';
+import Login from '../components/login';
 
 let beforeRouteRender = (dispatch, prevState, nextState) => {
   const { routes } = nextState;
@@ -13,11 +14,11 @@ let beforeRouteRender = (dispatch, prevState, nextState) => {
       if (component.displayName &&
         component.displayName.toLowerCase().indexOf('connect') > -1
       ) {
-        if (component.WrappedComponent.loadData) {
-          return component.WrappedComponent.loadData();
+        if (component.WrappedComponent.prefetchActions) {
+          return component.WrappedComponent.prefetchActions();
         }
-      } else if (component.loadData) {
-        return component.loadData();
+      } else if (component.prefetchActions) {
+        return component.prefetchActions();
       }
     }
     return [];
@@ -35,6 +36,7 @@ export const routes = (onChange = () => {}) => {
       <Route path="cart" component={Cart} />
       <Route path="products" component={Products} />
       <Route path="profile" component={Profile} />
+      <Route path="login" component={Login} />
     </Route>
   );
 };

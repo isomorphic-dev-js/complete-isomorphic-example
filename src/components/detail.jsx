@@ -44,7 +44,7 @@ class Detail extends React.Component {
     return tags;
   }
 
-  static loadData(params) {
+  static prefetchActions(params) {
     return [
       productActions.getProduct.bind(null, params.product)
     ];

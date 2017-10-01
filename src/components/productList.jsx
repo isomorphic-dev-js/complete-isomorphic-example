@@ -27,8 +27,8 @@ class ProductList extends React.Component {
           item.details.search(queryRegExp) > -1
         ) {
           itemsArray.push(
-            <Link href={`/product/detail/${item.id}`}>
-              <Item {...item} key={`${item.name}${index}`} />
+            <Link href={`/product/detail/${item.id}`} key={`${item.name}${index}`}>
+              <Item {...item} />
             </Link>
           );
         }

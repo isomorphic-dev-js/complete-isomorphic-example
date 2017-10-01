@@ -8,7 +8,7 @@ import Item from './item';
 import Search from './search';
 
 class ProductList extends React.Component {
-  static loadData(params) {
+  static prefetchActions(params) {
     return [
       productActions.getProductsByCategory.bind(null, params.category)
     ];

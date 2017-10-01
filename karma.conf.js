@@ -8,8 +8,6 @@ Object.assign(webpackConfig, {
   }
 });
 
-console.log("webpack", webpackConfig)
-
 module.exports = (config) => {
   config.set({
     frameworks: ['mocha', 'chai-sinon'],

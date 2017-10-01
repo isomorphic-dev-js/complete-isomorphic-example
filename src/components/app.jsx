@@ -33,7 +33,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.object,
   router: PropTypes.shape({
     push: PropTypes.function
   })

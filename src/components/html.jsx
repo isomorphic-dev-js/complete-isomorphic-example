@@ -44,19 +44,14 @@ const HTML = (props) => {
 };
 
 HTML.propTypes = {
-<<<<<<< HEAD
-  html: React.PropTypes.string,
-  serverState: React.PropTypes.string,
-  title: React.PropTypes.string,
-  metatags: React.PropTypes.arrayOf(React.PropTypes.shape({
-    content: React.PropTypes.string.isRequired,
-    name: React.PropTypes.string,
-    property: React.PropTypes.string
-  }))
-=======
   html: PropTypes.string,
-  serverState: PropTypes.string
->>>>>>> 5c456cd... chore: fix prop types issues
+  serverState: PropTypes.string,
+  title: PropTypes.string,
+  metatags: PropTypes.arrayOf(PropTypes.shape({
+    content: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    property: PropTypes.string
+  }))
 };
 
 export default HTML;

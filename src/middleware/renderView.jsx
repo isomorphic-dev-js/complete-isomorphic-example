@@ -19,11 +19,11 @@ export default function renderView(req, res, next) {
           if (component.displayName &&
             component.displayName.toLowerCase().indexOf('connect') > -1
           ) {
-            if (component.WrappedComponent.loadData) {
-              return component.WrappedComponent.loadData(renderProps.params);
+            if (component.WrappedComponent.prefetchActions) {
+              return component.WrappedComponent.prefetchActions(renderProps.params);
             }
-          } else if (component.loadData) {
-            return component.loadData(renderProps.params);
+          } else if (component.prefetchActions) {
+            return component.prefetchActions(renderProps.params);
           }
         }
         return [];

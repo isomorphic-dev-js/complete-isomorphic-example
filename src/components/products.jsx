@@ -9,7 +9,7 @@ import Search from './search';
 import Item from './item';
 
 class Products extends React.Component {
-  static loadData() {
+  static prefetchActions() {
     return [
       productActions.getProductCategories,
       productActions.getProducts

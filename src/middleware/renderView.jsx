@@ -37,7 +37,7 @@ export default function renderView(req, res, next) {
   const handleMatchResult = (error, redirectLocation, renderProps) => {
     if (!error && !redirectLocation && renderProps) {
       const store = initRedux();
-      const actions = flattenStaticFunction(renderProps, 'loadData');
+      const actions = flattenStaticFunction(renderProps, 'prefetchActions');
       const promises = actions.map((initialAction) => {
         return store.dispatch(initialAction());
       });

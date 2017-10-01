@@ -42,7 +42,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  children: React.PropTypes.element,
+  children: React.PropTypes.object,
   router: React.PropTypes.shape({
     push: React.PropTypes.function
   })

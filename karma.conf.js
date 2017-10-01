@@ -1,3 +1,15 @@
+var webpackConfig = require('./webpack.config.js');
+
+Object.assign(webpackConfig, {
+  externals: {
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': 'window'
+  }
+});
+
+console.log("webpack", webpackConfig)
+
 module.exports = (config) => {
   config.set({
     frameworks: ['mocha', 'chai-sinon'],
@@ -25,7 +37,7 @@ module.exports = (config) => {
       'karma-*'
     ],
 
-    webpack: require('./webpack.config.js'),
+    webpack: webpackConfig,
 
     webpackMiddleware: {
       noInfo: false,

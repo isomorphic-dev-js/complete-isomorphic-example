@@ -33,7 +33,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element,
   router: PropTypes.shape({
     push: PropTypes.function
   })

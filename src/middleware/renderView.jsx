@@ -47,7 +47,7 @@ export default function renderView(req, res, next) {
       const store = initRedux();
       const actions = flattenStaticFunction(
         renderProps,
-        'loadData',
+        'prefetchActions',
         null,
         req
       );

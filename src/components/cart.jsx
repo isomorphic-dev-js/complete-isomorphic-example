@@ -6,7 +6,7 @@ import cartActions from '../shared/cart-action-creators.es6';
 
 export class CartComponent extends Component {
 
-  static loadData() {
+  static prefetchActions() {
     return [
       cartActions.getCartItems
     ];

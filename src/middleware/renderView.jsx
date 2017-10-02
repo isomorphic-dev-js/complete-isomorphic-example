@@ -1,5 +1,8 @@
 import React from 'react';
-import { renderToString } from 'react-dom-stream/server';
+// use for streaming
+//import { renderToString } from 'react-dom-stream/server';
+// use for caching
+import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
 import { routes } from '../shared/sharedRoutes';
@@ -46,10 +49,10 @@ export default function renderView(req, res, next) {
   const handleMatchResult = (error, redirectLocation, renderProps) => {
     if (!error && !redirectLocation && renderProps) {
     //  use caching or streaming, not both
-    //   const cachedPage = cache.get(req.url);
-    //   if (cachedPage) {
-    //     return res.send(cachedPage);
-    //   }
+      const cachedPage = cache.get(req.url);
+      if (cachedPage) {
+        return res.send(cachedPage);
+      }
 
       const store = initRedux();
       const actions = flattenStaticFunction(
@@ -92,14 +95,14 @@ export default function renderView(req, res, next) {
         );
 
         // use caching or streaming, not both
-        streamHTML.pipe(res, { end: false });
-        streamHTML.on('end', () => {
-          res.end();
-        });
+        // streamHTML.pipe(res, { end: false });
+        // streamHTML.on('end', () => {
+        //   res.end();
+        // });
 
         // use caching or sreaming, not both.
-        // cache.set(req.url, `<!DOCTYPE html>${html}`);
-        // return res.send(`<!DOCTYPE html>${html}`);
+        cache.set(req.url, `<!DOCTYPE html>${streamHTML}`);
+        return res.send(`<!DOCTYPE html>${streamHTML}`);
       }).catch(() => {
         return next();
       });

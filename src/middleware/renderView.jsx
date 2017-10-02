@@ -88,11 +88,6 @@ export default function renderView(req, res, next) {
         streamHTML.on('end', () => {
           res.end();
         });
-        // return res.send(`<!DOCTYPE html>${html}`);
-        streamHTML.pipe(res, {end: false});
-    	streamHTML.on("end", function() {
-    		res.end();
-    	});
       }).catch(() => {
         return next();
       });

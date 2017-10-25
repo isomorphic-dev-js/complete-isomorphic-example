@@ -33,7 +33,7 @@ let beforeRouteRender = (dispatch, prevState, nextState) => {
   });
 
   sendData({
-    location: nextState && nextState.location.pathname,
+    location: nextState.location && nextState.location.pathname,
     type: 'navigation'
   });
 };

@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { browserHistory, Router } from 'react-router';
-import sharedRoutes from './shared/sharedRoutes';
+import { BrowserRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
+import routes from './shared/sharedRoutesv4';
 
 ReactDOM.render(
-  <Router routes={sharedRoutes} history={browserHistory} />,
+  <BrowserRouter>
+    { renderRoutes(routes) }
+  </BrowserRouter>,
   document.getElementById('react-content')
 );

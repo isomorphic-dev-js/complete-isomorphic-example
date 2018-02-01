@@ -5,21 +5,27 @@ class Profile extends React.Component {
 
   componentWillMount() {
     if (!this.props.user) {
-      this.props.router.push('/login');
+      this.props.history.push('/login');
     }
   }
 
   render() {
     return (
-      <div>Profile!</div>
+      <div>
+        Profile!
+      </div>
     );
   }
 }
 
+Profile.defaultProps = {
+  user: null
+}
+
 Profile.propTypes = {
-  router: PropTypes.shape({
+  history: PropTypes.shape({
     push: PropTypes.function
-  }),
+  }).isRequired,
   user: PropTypes.bool
 };
 

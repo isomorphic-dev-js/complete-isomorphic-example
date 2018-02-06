@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
-import Banner from './banner';
+import { Link } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
+import onRouteChange from './onRouteChange';
 
 const App = (props) => {
   return (
@@ -16,27 +17,22 @@ const App = (props) => {
         <h3>Check out the semi-annual sale! Up to 75% off select Items</h3>
       </Banner>
       <div className="ui main text container">
-        {
-          React.Children.map(
-            props.children,
-            (child) => {
-              return React.cloneElement(
-                child,
-                { router: props.router }
-              );
-            }
-          )
-        }
+        { renderRoutes(props.route.routes) }
       </div>
     </div>
   );
 };
 
 App.propTypes = {
-  children: PropTypes.element.isRequired,
-  router: PropTypes.shape({
-    push: PropTypes.function
-  })
-};
+  route: PropTypes.shape({
+    routes: PropTypes.arrayOf(PropTypes.shape({
+      path: PropTypes.string,
+      component: PropTypes.func
+    }))
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func
+  }).isRequired
+}
 
-export default App;
+export default onRouteChange(App);

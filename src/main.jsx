@@ -20,3 +20,15 @@ function init() {
 }
 
 init();
+// =======
+// import { BrowserRouter } from 'react-router-dom';
+// import { renderRoutes } from 'react-router-config';
+// import routes from './shared/sharedRoutesv4';
+//
+// ReactDOM.render(
+//   <BrowserRouter>
+//     { renderRoutes(routes) }
+//   </BrowserRouter>,
+//   document.getElementById('react-content')
+// );
+// >>>>>>> 3bd2f70... feat: upgrade to react router 4

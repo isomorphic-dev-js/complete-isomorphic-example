@@ -27,6 +27,8 @@ export default function renderView(req, res, next) {
       return store.dispatch(initialAction());
     });
     Promise.all(promises).then(() => {
+      const serverState = store.getState();
+      const stringifiedServerState = JSON.stringify(serverState);
       const app = renderToString(
         <Provider store={store}>
           <StaticRouter location={req.url} context={context}>
@@ -36,7 +38,12 @@ export default function renderView(req, res, next) {
       );
 
       if (!context.url) {
-        const html = renderToString(<HTML renderedToStringComponents={app} />);
+        const html = renderToString(
+          <HTML
+            renderedToStringComponents={app}
+            serverState={stringifiedServerState}
+          />
+        );
         res.send(`<!DOCTYPE html>${html}`);
       }
     });

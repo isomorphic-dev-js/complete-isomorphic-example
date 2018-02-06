@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import onRouteChange from './onRouteChange';
+import { connect } from 'react-redux';
 import Banner from './banner';
 
 const App = (props) => {
@@ -37,4 +37,4 @@ App.propTypes = {
   }).isRequired
 }
 
-export default onRouteChange(App);
+export default connect()(onRouteChange(App));

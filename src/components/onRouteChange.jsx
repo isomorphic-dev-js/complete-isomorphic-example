@@ -9,11 +9,37 @@ const onRouteChange = (WrappedComponent) => {
       console.log('Tracked a pageview');
     };
 
+    fetchData(nextProps) {
+      const { route, location } = nextProps;
+      const { routes } = route;
+      let routeComponent;
+      for (let key in routes) {
+        if (routes[key].path === location.pathname) {
+          routeComponent = routes[key].component;
+          break;
+        }
+      }
+      let actions = [];
+      if (routeComponent && routeComponent.prefetchActions) {
+        actions.push(routeComponent.prefetchActions());
+      }
+
+      actions = actions.reduce((flat, toFlatten) => {
+        return flat.concat(toFlatten);
+      }, []);
+
+      const promises = actions.map((initialAction) => {
+        return this.props.dispatch(initialAction());
+      });
+      Promise.all(promises);
+    }
+
     componentWillMount() {
       this.trackPageView();
     }
 
     componentWillReceiveProps(nextProps) {
+      this.fetchData(nextProps);
       const navigated = nextProps.location !== this.props.location;
 
       if (navigated) {

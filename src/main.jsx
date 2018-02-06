@@ -17,7 +17,9 @@ function init() {
       <BrowserRouter>
         { renderRoutes(routes) }
       </BrowserRouter>
-    </Provider>, document.getElementById('react-content'));
+    </Provider>,
+    document.getElementById('react-content')
+  );
 }
 
 init();

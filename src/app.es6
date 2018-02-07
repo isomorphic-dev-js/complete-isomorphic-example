@@ -41,14 +41,14 @@ app.get('/api/blog', (req, res) => {
   });
 });
 
+// setup static files to load css
+app.use(express.static(__dirname));
+
 app.get('/test', (req, res) => {
   res.send('Test route success!');
 });
 
 app.get('/*', renderViewMiddleware);
-
-// setup static files to load css
-app.use(express.static(__dirname));
 
 app.listen(3000, () => {
   console.log('App listening on port: 3000');

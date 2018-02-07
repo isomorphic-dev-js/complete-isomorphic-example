@@ -14,10 +14,11 @@ export default function renderView(req, res, next) {
   if (matches) {
     const store = initRedux();
     let actions = [];
-    matches.map(({route}) => {
+    matches.map(({ route }) => {
       if (route.component && route.component.prefetchActions) {
         actions.push(route.component.prefetchActions());
       }
+      return route;
     });
     actions = actions.reduce((flat, toFlatten) => {
       return flat.concat(toFlatten);

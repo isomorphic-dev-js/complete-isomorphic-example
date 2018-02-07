@@ -6,7 +6,7 @@
   "scripts": {
     "build:browser": "node_modules/.bin/webpack",
     "prestart": "npm run build:browser",
-    "start": "node src/server.js",
+    "start": "node --inspect src/server.js",
     "examples": "node examples-server.js",
     "test:browser": "node_modules/.bin/karma start",
     "test:server": "node_modules/.bin/mocha test/components/* --compilers js:babel-register --watch"
@@ -21,6 +21,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
+    "react-router": "^4.2.0",
     "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",

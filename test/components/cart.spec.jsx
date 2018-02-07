@@ -17,7 +17,7 @@ describe('Cart Component', () => {
           price: 10
         }
       ],
-      router: {
+      history: {
         push: sinon.spy()
       }
     };
@@ -31,7 +31,7 @@ describe('Cart Component', () => {
 
   it('When checkout is clicked, the router push method is triggered', () => {
     testComponent.find('.button').simulate('click');
-    expect(props.router.push.called).to.be.true;
-    expect(props.router.push.calledWith('/cart/payment')).to.be.true;
+    expect(props.history.push.called).to.be.true;
+    expect(props.history.push.calledWith('/cart/payment')).to.be.true;
   });
 });

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const HTML = (props) => {
   return (
@@ -30,8 +31,8 @@ const HTML = (props) => {
 };
 
 HTML.propTypes = {
-  html: React.PropTypes.string,
-  serverState: React.PropTypes
+  html: PropTypes.string.isRequired,
+  serverState: PropTypes.string.isRequired
 };
 
 export default HTML;

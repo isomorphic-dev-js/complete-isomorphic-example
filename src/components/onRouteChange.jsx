@@ -63,7 +63,7 @@ const onRouteChange = (WrappedComponent) => {
       });
     }
 
-    componentWillMount() {
+    componentDidMount() {
       this.trackPageView();
       this.sendAnalytics(this.props.location);
     }

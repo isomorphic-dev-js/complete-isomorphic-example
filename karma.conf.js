@@ -35,7 +35,7 @@ module.exports = (config) => {
       'karma-*'
     ],
 
-    webpack: require('./webpack.config.js'),
+    webpack: webpackConfig,
 
     webpackMiddleware: {
       noInfo: false,

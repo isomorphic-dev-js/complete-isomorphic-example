@@ -2,28 +2,42 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import onRouteChange from './onRouteChange';
 import { connect } from 'react-redux';
+import onRouteChange from './onRouteChange';
 import Banner from './banner';
+import {
+  parseUserAgent,
+  storeUserId
+} from '../shared/app-action-creators.es6';
 
-const App = (props) => {
-  return (
-    <div>
-      <div className="ui fixed inverted menu">
-        <h1 className="header item">All Things Westies</h1>
-        <Link to="/products" className="item">Products</Link>
-        <Link to="/cart" className="item">Cart</Link>
-        <Link to="/profile" className="item">Profile</Link>
+class App extends React.Component {
+
+  static prefetchActions(params, store, request = {}) {
+    return [
+      parseUserAgent.bind(null, request.headers),
+      storeUserId.bind(null, request.headers)
+    ];
+  }
+
+  render() {
+    return(
+      <div>
+        <div className="ui fixed inverted menu">
+          <h1 className="header item">All Things Westies</h1>
+          <Link to="/products" className="item">Products</Link>
+          <Link to="/cart" className="item">Cart</Link>
+          <Link to="/profile" className="item">Profile</Link>
+        </div>
+        <Banner show>
+          <h3>Check out the semi-annual sale! Up to 75% off select Items</h3>
+        </Banner>
+        <div className="ui main text container">
+          { renderRoutes(props.route.routes) }
+        </div>
       </div>
-      <Banner show>
-        <h3>Check out the semi-annual sale! Up to 75% off select Items</h3>
-      </Banner>
-      <div className="ui main text container">
-        { renderRoutes(props.route.routes) }
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 App.propTypes = {
   route: PropTypes.shape({

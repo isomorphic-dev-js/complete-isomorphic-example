@@ -7,11 +7,15 @@ import thunkMiddleware from 'redux-thunk';
 import loggerMiddleware from 'redux-logger';
 import products from './products-reducer.es6';
 import cart from './cart-reducer.es6';
+import search from './search-reducer.es6';
+import app from './app-reducer.es6';
 
 export default function (initialStore = {}) {
   const reducer = combineReducers({
     products,
-    cart
+    cart,
+    search,
+    app
   });
   const middleware = [thunkMiddleware, loggerMiddleware];
   let newCompose;

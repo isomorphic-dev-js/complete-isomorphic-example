@@ -2,10 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const HTML = (props) => {
+  const metatagsArray = [];
+  props.metatags.forEach((item) => {
+    metatagsArray.push(
+      <meta {...item} />
+    );
+  });
+
   return (
     <html lang="en">
       <head>
-        <title>All Things Westies</title>
+        <title
+          dangerouslySetInnerHTML={{
+            __html: props.title || 'All Things Westies'
+          }}
+        />
+        {metatagsArray}
+        <link rel="shortcut icon" href="/assets/favicon.ico" />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css"
@@ -31,8 +44,14 @@ const HTML = (props) => {
 };
 
 HTML.propTypes = {
-  html: PropTypes.string.isRequired,
-  serverState: PropTypes.string.isRequired
+  html: PropTypes.string,
+  serverState: PropTypes.string,
+  title: PropTypes.string,
+  metatags: PropTypes.arrayOf(PropTypes.shape({
+    content: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    property: PropTypes.string
+  }))
 };
 
 export default HTML;

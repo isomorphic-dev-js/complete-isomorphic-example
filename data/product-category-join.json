@@ -1,0 +1,33 @@
+[
+  {
+    "id": "gifts",
+    "products": [
+      "embedded-westie-mug",
+      "super-cool-tshirt",
+      "westie-throw-blanket"
+    ]
+  },
+  {
+    "id": "dogs",
+    "products": [
+      "collar",
+      "leash-pattern"
+    ]
+  },
+  {
+    "id": "treats-and-food",
+    "products": [
+      "organic-bacon-treats",
+      "dog-food",
+      "organic-dog-food"
+    ]
+  },
+  {
+    "id": "top-picks",
+    "products": [
+      "embedded-westie-mug",
+      "organic-bacon-treats",
+      "leash-pattern"
+    ]
+  }
+]

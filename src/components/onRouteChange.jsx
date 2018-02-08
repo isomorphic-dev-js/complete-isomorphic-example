@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { matchRoutes } from 'react-router-config';
+import { sendData } from '../analytics.es6';
 
 const onRouteChange = (WrappedComponent) => {
   return class extends React.PureComponent {
+
+    static wrappedComponent() {
+      return WrappedComponent;
+    }
 
     trackPageView() {
       // In real life you would hook this up to your analytics tool of choice
@@ -11,20 +17,36 @@ const onRouteChange = (WrappedComponent) => {
 
     fetchData(nextProps) {
       const { route, location } = nextProps;
+      // need to get a matches result here as well!!!
       const { routes } = route;
       let routeComponent;
-      for (let key in routes) {
-        if (routes[key].path === location.pathname) {
-          routeComponent = routes[key].component;
-          break;
+      const matches = matchRoutes(routes, location.pathname);
+      let results = matches.map(({match, route}) => {
+        const component = route.component;
+        if (component) {
+          if (component.displayName &&
+              component.displayName.toLowerCase().indexOf('connect') > -1
+          ) {
+            let parentComponent = component.WrappedComponent
+            if (parentComponent['prefetchActions']) {
+              return parentComponent['prefetchActions'](
+                location.pathname.substring(1)
+              );
+            } else if (parentComponent.wrappedComponent && parentComponent.wrappedComponent()['prefetchActions']) {
+              return parentComponent.wrappedComponent()['prefetchActions'](
+                location.pathname.substring(1)
+              );
+            }
+          } else if (component['prefetchActions']) {
+            return component['prefetchActions'](
+              location.pathname.substring(1)
+            )
+          }
         }
-      }
-      let actions = [];
-      if (routeComponent && routeComponent.prefetchActions) {
-        actions.push(routeComponent.prefetchActions());
-      }
+        return [];
+      });
 
-      actions = actions.reduce((flat, toFlatten) => {
+      const actions = results.reduce((flat, toFlatten) => {
         return flat.concat(toFlatten);
       }, []);
 
@@ -34,8 +56,16 @@ const onRouteChange = (WrappedComponent) => {
       Promise.all(promises);
     }
 
+    sendAnalytics(location) {
+      sendData({
+        location: location && location.pathname,
+        type: 'navigation'
+      });
+    }
+
     componentWillMount() {
       this.trackPageView();
+      this.sendAnalytics(this.props.location);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -45,6 +75,8 @@ const onRouteChange = (WrappedComponent) => {
       if (navigated) {
         this.trackPageView();
       }
+
+      this.sendAnalytics(nextProps.location);
     }
 
     render() {

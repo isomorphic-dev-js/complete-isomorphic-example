@@ -9,7 +9,7 @@ const onRouteChange = (WrappedComponent) => {
       console.log('Tracked a pageview');
     };
 
-    componentWillMount() {
+    componentDidMount() {
       this.trackPageView();
     }
 

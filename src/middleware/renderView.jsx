@@ -12,19 +12,36 @@ import initRedux from '../shared/init-redux.es6';
 import cache from '../shared/cache.es6';
 
 function flattenStaticFunction(matches, staticFnName, store = {}, request) {
-  console.log("request", request && request.params)
-  let results = matches.map((route) => {
-    if (route.component && route.component[staticFnName]) {
-      return route.component[staticFnName](
-        request.params,
-        store,
-        request
-      );
+  let results = matches.map(({match, route}) => {
+    const component = route.component;
+    if (component) {
+      if (component.displayName &&
+          component.displayName.toLowerCase().indexOf('connect') > -1
+      ) {
+        let parentComponent = component.WrappedComponent
+        if (parentComponent[staticFnName]) {
+          return parentComponent[staticFnName](
+            request.params[0],
+            store,
+            request
+          );
+        } else if (parentComponent.wrappedComponent && parentComponent.wrappedComponent()[staticFnName]) {
+          return parentComponent.wrappedComponent()[staticFnName](
+            request.params[0],
+            store,
+            request
+          );
+        }
+      } else if (component[staticFnName]) {
+        return component[staticFnName](
+          request.params[0],
+          store,
+          request
+        )
+      }
     }
     return [];
   });
-
-  console.log("results", results)
 
   results = results.reduce((flat, toFlatten) => {
     return flat.concat(toFlatten);
@@ -52,7 +69,6 @@ export default function renderView(req, res, next) {
     );
 
     const promises = actions.map((initialAction) => {
-      console.log("initialaction", initialAction)
       return store.dispatch(initialAction());
     });
     Promise.all(promises).then(() => {

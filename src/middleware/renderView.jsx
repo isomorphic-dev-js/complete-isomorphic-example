@@ -10,13 +10,26 @@ import initRedux from '../shared/init-redux.es6';
 export default function renderView(req, res, next) {
   const matches = matchRoutes(routes, req.path);
   const context = {}
+  let actions = [];
 
   if (matches) {
     const store = initRedux();
     let actions = [];
-    matches.map(({route}) => {
-      if (route.component && route.component.prefetchActions) {
-        actions.push(route.component.prefetchActions());
+    matches.map(({match, route}) => {
+      const component = route.component;
+      if (component) {
+        if (component.displayName &&
+            component.displayName.toLowerCase().indexOf('connect') > -1
+        ) {
+          let parentComponent = component.WrappedComponent
+          if (parentComponent.prefetchActions) {
+            actions.push(parentComponent.prefetchActions());
+          } else if (parentComponent.wrappedComponent && parentComponent.wrappedComponent().prefetchActions) {
+            actions.push(parentComponent.wrappedComponent().prefetchActions());
+          }
+        } else if (component.prefetchActions) {
+          actions.push(component.prefetchActions());
+        }
       }
     });
     actions = actions.reduce((flat, toFlatten) => {

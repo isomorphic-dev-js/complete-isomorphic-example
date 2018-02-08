@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import productActions from '../shared/products-action-creators.es6';
@@ -10,8 +10,9 @@ import Search from './search';
 
 class ProductList extends React.Component {
   static prefetchActions(params) {
+    const category = params.split('/')[1];
     return [
-      productActions.getProductsByCategory.bind(null, params.category)
+      productActions.getProductsByCategory.bind(null, category)
     ];
   }
 
@@ -28,7 +29,7 @@ class ProductList extends React.Component {
           item.details.search(queryRegExp) > -1
         ) {
           itemsArray.push(
-            <Link href={`/product/detail/${item.id}`} key={`${item.name}${index}`}>
+            <Link to={`/product/detail/${item.id}`} key={`${item.name}${index}`}>
               <Item {...item} />
             </Link>
           );

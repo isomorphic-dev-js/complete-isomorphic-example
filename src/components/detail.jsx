@@ -46,8 +46,9 @@ class Detail extends React.Component {
   }
 
   static prefetchActions(params) {
+    const product = params.split('/')[2];
     return [
-      productActions.getProduct.bind(null, params.product)
+      productActions.getProduct.bind(null, product)
     ];
   }
 

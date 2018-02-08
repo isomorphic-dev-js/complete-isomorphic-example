@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
@@ -115,7 +115,7 @@ class Products extends React.Component {
           <div className="ui segment divided middle items">
             {this.renderItems()}
           </div>
-          }
+        }
       </div>
     );
   }

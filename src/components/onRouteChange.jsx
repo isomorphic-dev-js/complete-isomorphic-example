@@ -34,7 +34,7 @@ const onRouteChange = (WrappedComponent) => {
       Promise.all(promises);
     }
 
-    componentWillMount() {
+    componentDidMount() {
       this.trackPageView();
     }
 

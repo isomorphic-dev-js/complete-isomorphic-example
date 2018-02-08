@@ -17,9 +17,7 @@ const onRouteChange = (WrappedComponent) => {
 
     fetchData(nextProps) {
       const { route, location } = nextProps;
-      // need to get a matches result here as well!!!
       const { routes } = route;
-      let routeComponent;
       const matches = matchRoutes(routes, location.pathname);
       let results = matches.map(({match, route}) => {
         const component = route.component;

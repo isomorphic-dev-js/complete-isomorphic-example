@@ -7,7 +7,8 @@ import ProductList from '../components/productList';
 import Detail from '../components/detail';
 import Payment from '../components/payment';
 
-export const routes = [
+
+const routes = [
   {
     component: App,
     routes: [
@@ -48,5 +49,14 @@ export const routes = [
     ]
   }
 ]
+
+if (process.env.NODE_ENV !== 'production') {
+  routes[0].routes.push({
+    path: '/dev-test',
+    component: Products
+  });
+}
+
+export { routes };
 
 export default routes;

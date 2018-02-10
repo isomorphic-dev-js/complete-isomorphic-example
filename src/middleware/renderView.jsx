@@ -1,25 +1,27 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router';
+import { StaticRouter } from 'react-router'; //TODO: I dont think that this import is resolvable
 import { matchRoutes, renderRoutes } from 'react-router-config';
 import { Provider } from 'react-redux';
 import routes from '../shared/sharedRoutesv4';
 import HTML from '../components/html';
 import initRedux from '../shared/init-redux.es6';
-
+//TODO: there are a lot more imports here than the docs
 export default function renderView(req, res, next) {
   const matches = matchRoutes(routes, req.path);
   const context = {}
-  let actions = [];
+  let actions = []; //TODO this is out of scope and not in the docs
 
   if (matches) {
     const store = initRedux();
     let actions = [];
     matches.map(({match, route}) => {
       const component = route.component;
+      //TODO: Dear god, there is so much nesting. This is 🔥💩🔥
       if (component) {
         if (component.displayName &&
             component.displayName.toLowerCase().indexOf('connect') > -1
+        //  TODO: Use includes https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
         ) {
           let parentComponent = component.WrappedComponent
           if (parentComponent.prefetchActions) {

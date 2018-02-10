@@ -7,6 +7,13 @@ import ProductList from '../components/productList';
 import Detail from '../components/detail';
 import Payment from '../components/payment';
 
+//TODO: in the docs put...
+// const routes = [
+//   {
+//     component: App,
+//     routes:[...]
+//   }
+// ]
 
 const routes = [
   {

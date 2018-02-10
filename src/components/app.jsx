@@ -5,7 +5,7 @@ import { renderRoutes } from 'react-router-config';
 import onRouteChange from './onRouteChange';
 import { connect } from 'react-redux';
 import Banner from './banner';
-
+//TODO: Idk what file Listing x8 refers to, there is no file name listed
 const App = (props) => {
   return (
     <div>

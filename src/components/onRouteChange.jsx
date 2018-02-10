@@ -8,7 +8,7 @@ const onRouteChange = (WrappedComponent) => {
       // In real life you would hook this up to your analytics tool of choice
       console.log('Tracked a pageview');
     };
-
+    //TODO: This code does not even come close to the code in the docs
     fetchData(nextProps) {
       const { route, location } = nextProps;
       const { routes } = route;

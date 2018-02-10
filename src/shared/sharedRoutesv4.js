@@ -1,3 +1,4 @@
+// TODO: This file has the wrong extension the docs say (.jsx)
 import App from '../components/app';
 import Cart from '../components/cart';
 import Products from '../components/products';

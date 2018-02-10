@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
-import { renderRoutes } from 'react-router-config';
-import onRouteChange from './onRouteChange';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import { renderRoutes } from 'react-router-config'
+import onRouteChange from './onRouteChange'
 
 const App = (props) => {
   return (
@@ -14,6 +14,7 @@ const App = (props) => {
         <Link to="/profile" className="item">Profile</Link>
       </div>
       <div className="ui main text container">
+        {/*TODO: The docs have additional lines in  listing x5 (history...)*/}
         { renderRoutes(props.route.routes) }
       </div>
     </div>
@@ -31,7 +32,7 @@ App.propTypes = {
     push: PropTypes.func
   }).isRequired
 }
-
+//TODO: This code doesn't match the code in the docs
 export default onRouteChange(App);
 
 

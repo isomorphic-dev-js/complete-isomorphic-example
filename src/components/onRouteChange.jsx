@@ -27,6 +27,7 @@ const onRouteChange = (WrappedComponent) => {
   }
 
   onRouteChange.propTypes = {
+    //TODO: This is unreachable code!!
     location: PropTypes.string.isRequired,
     Component: PropTypes.element.isRequired
   };

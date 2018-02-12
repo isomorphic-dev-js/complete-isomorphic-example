@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import routes from './shared/sharedRoutesv4';
+import routes from './shared/sharedRoutesv4.es6';
 import initRedux from './shared/init-redux.es6';
 
 const initialState = JSON.parse(window.__SERIALIZED_STATE__);

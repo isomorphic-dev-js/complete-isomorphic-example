@@ -6,7 +6,7 @@ import {renderToString} from 'react-dom/server';
 import {StaticRouter} from 'react-router';
 import {matchRoutes, renderRoutes} from 'react-router-config';
 import {Provider} from 'react-redux';
-import routes from '../shared/sharedRoutesv4';
+import routes from '../shared/sharedRoutesv4.es6';
 import HTML from '../components/html';
 import initRedux from '../shared/init-redux.es6';
 import cache from '../shared/cache.es6';

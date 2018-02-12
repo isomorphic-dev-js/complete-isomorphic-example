@@ -32,7 +32,12 @@ class App extends React.Component {
           <h3>Check out the semi-annual sale! Up to 75% off select Items</h3>
         </Banner>
         <div className="ui main text container">
-          { renderRoutes(this.props.route.routes) }
+          {
+            renderRoutes(
+              props.route.routes,
+              { history: props.history }
+            )
+          }
         </div>
       </div>
     );

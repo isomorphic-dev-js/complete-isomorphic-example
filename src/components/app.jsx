@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import onRouteChange from './onRouteChange';
 import { connect } from 'react-redux';
+import onRouteChange from './onRouteChange';
 import Banner from './banner';
 
 const App = (props) => {

@@ -10,7 +10,6 @@ import initRedux from '../shared/init-redux.es6';
 export default function renderView(req, res, next) {
   const matches = matchRoutes(routes, req.path);
   const context = {}
-  let actions = [];
 
   if (matches) {
     const store = initRedux();

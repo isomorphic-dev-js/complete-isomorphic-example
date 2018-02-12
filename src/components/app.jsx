@@ -14,7 +14,12 @@ const App = (props) => {
         <Link to="/profile" className="item">Profile</Link>
       </div>
       <div className="ui main text container">
-        { renderRoutes(props.route.routes) }
+        {
+          renderRoutes(
+            props.route.routes,
+            { history: props.history }
+          )
+        }
       </div>
     </div>
   );

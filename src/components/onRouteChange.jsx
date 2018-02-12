@@ -51,11 +51,6 @@ const onRouteChange = (WrappedComponent) => {
       return <WrappedComponent {...this.props} />;
     }
   }
-
-  onRouteChange.propTypes = {
-    location: PropTypes.string.isRequired,
-    Component: PropTypes.element.isRequired
-  };
 }
 
 export default onRouteChange;

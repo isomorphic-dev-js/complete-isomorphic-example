@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { matchRoutes } from 'react-router-config';
 
 const onRouteChange = (WrappedComponent) => {
   return class extends React.PureComponent {
@@ -12,19 +12,33 @@ const onRouteChange = (WrappedComponent) => {
     fetchData(nextProps) {
       const { route, location } = nextProps;
       const { routes } = route;
-      let routeComponent;
-      for (let key in routes) {
-        if (routes[key].path === location.pathname) {
-          routeComponent = routes[key].component;
-          break;
+      const matches = matchRoutes(routes, location.pathname);          //#B
+      const results = matches.map(({match, route}) => {                  //#C
+        const component = route.component;
+        if (component) {                                               //#D
+          if (component.displayName &&
+              component.displayName.toLowerCase().indexOf('connect') > -1
+          ) {
+            let parentComponent = component.WrappedComponent
+            if (parentComponent.prefetchActions) {
+              return parentComponent.prefetchActions(
+                location.pathname.substring(1)
+              );
+            } else if (parentComponent.wrappedComponent && parentComponent.wrappedComponent().prefetchActions) {              //#E
+              return parentComponent.wrappedComponent().prefetchActions(
+                location.pathname.substring(1)
+              );
+            }
+          } else if (component.prefetchActions) {
+            return component.prefetchActions(
+              location.pathname.substring(1)
+            )
+          }
         }
-      }
-      let actions = [];
-      if (routeComponent && routeComponent.prefetchActions) {
-        actions.push(routeComponent.prefetchActions());
-      }
+        return [];
+      });
 
-      actions = actions.reduce((flat, toFlatten) => {
+      const actions = results.reduce((flat, toFlatten) => {
         return flat.concat(toFlatten);
       }, []);
 

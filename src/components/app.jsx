@@ -1,8 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
-import { renderRoutes } from 'react-router-config';
-import onRouteChange from './onRouteChange';
+import { Link, Route, withRouter } from 'react-router-dom';
+import Cart from '../components/cart';
+import Products from '../components/products';
+import Profile from '../components/profile';
+import Login from '../components/login';
+
 
 const App = (props) => {
   return (
@@ -14,24 +16,17 @@ const App = (props) => {
         <Link to="/profile" className="item">Profile</Link>
       </div>
       <div className="ui main text container">
-        { renderRoutes(props.route.routes) }
+        <Route path="/" exact component={Products} />
+        <Route path="/products" component={Products} />
+        <Route path="/cart" component={Cart} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/login" component={Login} />
+
       </div>
     </div>
   );
 };
 
-App.propTypes = {
-  route: PropTypes.shape({
-    routes: PropTypes.arrayOf(PropTypes.shape({
-      path: PropTypes.string,
-      component: PropTypes.func
-    }))
-  }).isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func
-  }).isRequired
-}
-
-export default onRouteChange(App);
+export default withRouter(App);
 
 

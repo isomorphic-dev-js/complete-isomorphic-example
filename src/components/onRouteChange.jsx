@@ -10,8 +10,8 @@ const onRouteChange = (WrappedComponent) => {
       return WrappedComponent;
     }
 
-    trackPageView() {
-      // In real life you would hook this up to your analytics tool of choice
+    trackPageView(location) {
+      this.sendAnalytics(location);
       console.log('Tracked a pageview');
     };
 
@@ -62,8 +62,7 @@ const onRouteChange = (WrappedComponent) => {
     }
 
     componentDidMount() {
-      this.trackPageView();
-      this.sendAnalytics(this.props.location);
+      this.trackPageView(this.props.location);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -71,10 +70,8 @@ const onRouteChange = (WrappedComponent) => {
       const navigated = nextProps.location !== this.props.location;
 
       if (navigated) {
-        this.trackPageView();
+        this.trackPageView(nextProps.location);
       }
-
-      this.sendAnalytics(nextProps.location);
     }
 
     render() {

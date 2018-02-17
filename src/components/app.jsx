@@ -34,8 +34,8 @@ class App extends React.Component {
         <div className="ui main text container">
           {
             renderRoutes(
-              props.route.routes,
-              { history: props.history }
+              this.props.route.routes,
+              { history: this.props.history }
             )
           }
         </div>

@@ -114,7 +114,7 @@ export default function renderView(req, res, next) {
 
         // use caching or sreaming, not both.
 
-        cache.set(req.url, `<!DOCTYPE html>${streamHTML}`);
+        // cache.set(req.url, `<!DOCTYPE html>${streamHTML}`);
         return res.send(`<!DOCTYPE html>${streamHTML}`);
       } else {
         return next();

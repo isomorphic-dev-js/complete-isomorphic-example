@@ -113,18 +113,18 @@ app.get('/api/blog', (req, res) => {
   });
 });
 
+// setup static files to load css
+app.use(express.static(__dirname));
+
 app.get('/test', (req, res) => {
   res.send('Test route success!');
 });
-
-// setup static files to load css
-app.use(express.static(__dirname));
 
 app.post('/analytics', (req, res) => {
   res.send();
 });
 
-app.get('/*', renderViewMiddleware);
+app.get('/*', renderViewMiddleware)
 
 app.listen(3000, () => {
   console.log('App listening on port: 3000');
